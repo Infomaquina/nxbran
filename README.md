@@ -8,6 +8,7 @@ npm i -D dotenv
 npm i bcrypt
 ## JWT
 npm i jsonwebtoken
+npm i --save-dev @types/jsonwebtoken
 ## SQL
 npm i mysql2
 ## PRISMA

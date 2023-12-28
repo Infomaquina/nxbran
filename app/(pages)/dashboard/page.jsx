@@ -6,7 +6,7 @@ export default async function dashboard() {
   const session = await getServerSession(authOptions)
   return (
    <>
-      <h1>Dashboard. Olá {session.name}</h1>
+      <h1>Dashboard. Olá {session.nome}</h1>
       <ButtonLogout/>
    </>
   )

@@ -2,7 +2,14 @@ import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import executeQuery from '../../../../database/sql'
 import bcrypt from 'bcrypt';
-import { sign, verify } from 'jsonwebtoken';
+import { sign } from 'jsonwebtoken';
+
+const generateAccessToken = (user) => {
+  const accessToken = sign({ userId: user.id }, process.env.NEXTAUTH_SECRET, {
+    expiresIn: '30h',
+  });
+  return accessToken;
+};
 
 export const authOptions = {
   providers: [
@@ -20,6 +27,11 @@ export const authOptions = {
             if (user[0].name == undefined || !(await bcrypt.compare(credentials.password, user[0].password))) {
                return null;
             }
+
+            const token = generateAccessToken(user[0]);
+            await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
+            user[0].token = token;
+
             return user[0]  
 
          } catch (error) {
@@ -35,7 +47,12 @@ export const authOptions = {
          return token
       },
       async session({ session, token }){
-         session = token.user
+         session.id = token.user.id,
+         session.nome = token.user.name,
+         session.email = token.user.email,
+         session.level = token.user.level,
+         session.status = token.user.status,
+         session.token = token.user.token 
          return session
       }
   }
