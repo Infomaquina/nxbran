@@ -20,3 +20,5 @@ npm i mysql2
 npm i -D sass
 ## AUTH
 npm i next-auth
+## FORM 
+npm i react-hook-form
