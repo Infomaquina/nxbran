@@ -1,5 +1,6 @@
 import FormLogin from "./components/FormLogin";
 import AuthToken from "./components/AuthToken" 
+import ButtonGoogle from "./components/ButtonGoogle"
 import { redirect } from "next/navigation"
 
 export default async function Home() {
@@ -19,7 +20,7 @@ export default async function Home() {
                <div className="p-5">
                   <div className="grid grid-cols-3 gap-1">
                      <button type="button" className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">MailUp</button>
-                     <button type="button" className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">Google</button>
+                     <ButtonGoogle/>
                      <button type="button" className="transition duration-200 border border-gray-200 text-gray-500 w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-normal text-center inline-block">Github</button>
                   </div>
                </div>

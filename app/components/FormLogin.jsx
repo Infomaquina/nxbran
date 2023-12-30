@@ -3,12 +3,12 @@ import { useForm } from "react-hook-form"
 import { signIn } from "next-auth/react"
 
 export default function FormLogin() {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm()
+   const {
+      register,
+      handleSubmit,
+      watch,
+      formState: { errors },
+   } = useForm()
 
 
   const onSubmit = async (data) => {  

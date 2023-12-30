@@ -31,7 +31,7 @@ export const authOptions = {
 
             const token = generateAccessToken(user[0]);
             await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
-            user[0].token = token;
+            // user[0].token = token;
 
             return user[0]  
 
@@ -55,12 +55,10 @@ export const authOptions = {
          return token
       },
       async session({ session, token }){
-         session.id = token.user.id,
-         session.nome = token.user.name,
-         session.email = token.user.email,
-         session.level = token.user.level,
-         session.status = token.user.status,
-         session.token = token.user.token 
+         session.user.id = token.user.id,
+         session.user.level = token.user.level,
+         session.user.status = token.user.status,
+         session.user.token = token.user.token 
          return session
       }
   }
