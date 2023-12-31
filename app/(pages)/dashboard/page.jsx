@@ -5,7 +5,6 @@ import Image from "next/image";
 
 export default async function Dashboard() {
    const session = await getServerSession(authOptions);
-   console.log(session);
    return (
       <>
          <h1>Dashboard. Olá {session.user.name}</h1>

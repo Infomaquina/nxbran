@@ -25,7 +25,7 @@ export const authOptions = {
          try {            
             let user = await executeQuery("SELECT * FROM users WHERE email = ?", [credentials.email]);
 
-            if (user[0].name == undefined || !(await bcrypt.compare(credentials.password, user[0].password))) {
+            if (!user || !(await bcrypt.compare(credentials.password, user[0].password))) {
                return null;
             }
 

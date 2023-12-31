@@ -24,7 +24,6 @@ const executeQuery = async(query, data)=>{
       const [result] = await connection.query(query,data);
       connection.release();
 
-      console.log(result);
       return result
    } catch (error) {
       console.log(error);
