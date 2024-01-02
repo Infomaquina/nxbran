@@ -22,4 +22,6 @@ npm i mysql2
 ```npm i --save @fortawesome/free-regular-svg-icons```
 ```npm i --save @fortawesome/free-brands-svg-icons```
 ```npm i --save @fortawesome/react-fontawesome@latest```
+## ANIMATE
+```npm i animate.css --save```
 

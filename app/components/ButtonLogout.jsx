@@ -1,6 +1,7 @@
 'use client'
 import { signOut } from "next-auth/react"
 import { useRouter } from "next/navigation"
+import Button from 'react-bootstrap/Button';
 
 export default function Logout(){
    const router = useRouter()
@@ -13,5 +14,5 @@ export default function Logout(){
       router.replace('/')
    }
 
-   return <button onClick={sair} className="btn btn-warning">Sair</button>
+   return <Button variant="warning" onClick={sair}>Sair</Button>
 }
