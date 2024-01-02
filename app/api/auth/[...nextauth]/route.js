@@ -1,6 +1,7 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google";
+import TwitterProvider from "next-auth/providers/twitter";
 import executeQuery from '../../../../database/sql'
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
@@ -14,36 +15,40 @@ const generateAccessToken = (user) => {
 
 export const authOptions = {
   providers: [
-    CredentialsProvider({
-      name: 'credentials',
-      credentials: {
-         email: { label: 'Email', type: 'text' },
-         password: { label: 'Senha', type: 'password' }
-      },
+      CredentialsProvider({
+         name: 'credentials',
+         credentials: {
+            email: { label: 'Email', type: 'text' },
+            password: { label: 'Senha', type: 'password' }
+         },
 
-      async authorize(credentials, req) {
-         try {            
-            let user = await executeQuery("SELECT * FROM users WHERE email = ?", [credentials.email]);
+         async authorize(credentials, req) {
+            try {            
+               let user = await executeQuery("SELECT * FROM users WHERE email = ?", [credentials.email]);
 
-            if (!user || !(await bcrypt.compare(credentials.password, user[0].password))) {
+               if (!user || !(await bcrypt.compare(credentials.password, user[0].password))) {
+                  return null;
+               }
+
+               const token = generateAccessToken(user[0]);
+               await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
+               // user[0].token = token;
+
+               return user[0]  
+
+            } catch (error) {
+               console.error("Erro em authorize", error);
                return null;
             }
-
-            const token = generateAccessToken(user[0]);
-            await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
-            // user[0].token = token;
-
-            return user[0]  
-
-         } catch (error) {
-            console.error("Erro em authorize", error);
-            return null;
          }
-      }
-    }),
+      }),
       GoogleProvider({
          clientId: process.env.GOOGLE_CLIENT_ID,
          clientSecret: process.env.GOOGLE_CLIENT_SECRET
+      }),
+      TwitterProvider({
+         clientId: process.env.TWITTER_CLIENT_ID,
+         clientSecret: process.env.TWITTER_CLIENT_SECRET
       })
   ],
   pages: {

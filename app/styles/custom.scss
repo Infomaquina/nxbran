@@ -1,0 +1,28 @@
+//VARIAVEIS PADRÃO
+// $theme-colors: (
+//   "success":   #5cb85c,
+//   "danger":    #dc3545,
+//   "primary":   #0d3980,
+//   "secondary": #5d5d5d,
+//   "warning":   #fad609,
+//   "dark":      #212529,
+//   "black":     #000000,
+//   "light":     #adb5bd
+// );
+
+$primary:   #0055c4;
+$success:   #2d8203;
+$danger:    #e32701;
+$info:      #630ab7;
+$warning:   #ff9500;
+$dark:      #c6c6c6;
+$modal-backdrop-opacity: .6;
+$modal-xxl: 1300px;
+$form-check-radio-border-radius: 0%;
+$form-check-input-focus-border: #ffffff;
+$form-check-input-focus-box-shadow: #ffffff;
+
+@import "../../node_modules/bootstrap/scss/functions"; 
+@import "../../node_modules/bootstrap/scss/_variables";
+@import "../../node_modules/bootstrap/scss/bootstrap"
+

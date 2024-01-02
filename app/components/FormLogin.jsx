@@ -2,6 +2,11 @@
 import { signIn } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faLock } from '@fortawesome/free-solid-svg-icons'
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function FormLogin() {
 
@@ -28,22 +33,32 @@ export default function FormLogin() {
 
 
   return (
-    <form onSubmit={handleSubmit}>
-
-      <label className="font-semibold text-sm text-gray-600 pb-1 block">E-mail</label>
-      <input type="text" className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full text-gray-600" placeholder="meu@email.com" onChange={(e) => setEmail(e.target.value)}/>
-
-      <label className="font-semibold text-sm text-gray-600 pb-1 block">Senha</label>
-      <input type="password" className="border rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full text-gray-600" placeholder="Minha Senha" onChange={(e) => setPassword(e.target.value)}/>
-
-      <button type="submit" className="transition duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
-         <span className="inline-block mr-2">Login</span>
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" className="w-4 h-4 inline-block">
-               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-            </svg>
-      </button>
+    <form className="Auth-form" onSubmit={handleSubmit}>
+      
+      <div className="Auth-form-content">
+         <h3 className="Auth-form-title">
+            <Image src="/img/pwa/p.png" alt="Logo" width={100} height={30}/>
+         </h3>
+         <div className="form-group mt-3">
+            <label>
+               <FontAwesomeIcon icon={faEnvelope} className="me-2" />E-mail
+            </label>
+            <input type="email" className="form-control mt-1" placeholder="Meu@email.com" onChange={(e) => setEmail(e.target.value)}/>
+         </div>
+         <div className="form-group mt-2">
+            <label>
+               <FontAwesomeIcon icon={faLock} className="me-2" />Senha
+            </label>
+            <input type="password" className="form-control mt-1" placeholder="Minha senha" onChange={(e) => setPassword(e.target.value)}/>
+         </div>
+         <div className="d-grid gap-2 mt-3">
+            <button type="submit" className="btn btn-primary">
+            <FontAwesomeIcon icon={faCircleRight} className="me-2" />Entrar
+            </button>
+         </div>
+      </div>
       <div className="text-center mt-2">
-         {erro && <p className="text-red-500">{erro}</p>}
+         {erro && <p className="text-danger">{erro}</p>}
       </div>
     </form>
   )

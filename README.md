@@ -1,6 +1,7 @@
 ## SSL
 "scripts": {
-    "dev": "next dev --experimental-https",
+   "dev": "next dev --experimental-https",
+   "sass": "sass --watch app/styles/custom.scss:app/styles/custom.css"
 }
 ## ENV
 npm i -D dotenv
@@ -11,14 +12,14 @@ npm i jsonwebtoken
 npm i --save-dev @types/jsonwebtoken
 ## SQL
 npm i mysql2
-## PRISMA
-   npm i -D typescript ts-node @types/node
-   npm i -D prisma
-   npx prisma init --datasource-provider mysql
-   npm i @prisma/client
-## SASS
-npm i -D sass
 ## AUTH
-npm i next-auth
-## FORM 
-npm i react-hook-form
+```npm i next-auth```
+## BOOTSTRAP
+```npm i bootstrap react-bootstrap sass-bootstrap```
+## FONTAWESOME
+```npm i --save @fortawesome/fontawesome-svg-core```
+```npm i --save @fortawesome/free-solid-svg-icons```
+```npm i --save @fortawesome/free-regular-svg-icons```
+```npm i --save @fortawesome/free-brands-svg-icons```
+```npm i --save @fortawesome/react-fontawesome@latest```
+
