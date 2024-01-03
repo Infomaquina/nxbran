@@ -20,6 +20,7 @@
     "animate.css": "^4.1.1",
     "bcrypt": "^5.1.1",
     "bootstrap": "^5.3.2",
+    "date-fns": "^3.0.6",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.6.5",
     "next": "14.0.4",

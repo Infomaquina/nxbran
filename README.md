@@ -24,4 +24,6 @@ npm i mysql2
 ```npm i --save @fortawesome/react-fontawesome@latest```
 ## ANIMATE
 ```npm i animate.css --save```
+## DATE
+```npm i date-fns```
 
