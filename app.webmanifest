@@ -1,0 +1,128 @@
+{
+  "id": "/",
+  "dir": "ltr",
+  "name": "PONTO",
+  "lang": "pt",
+  "scope": "/",
+  "display": "fullscreen",
+  "start_url": "/",
+  "short_name": "PONTO",
+  "orientation": "any",
+  "theme_color": "#0073c4",
+  "description": "Sistema Ponto",
+  "background_color": "#ffffff",
+  "prefer_related_applications": false,
+  "iarc_rating_id": "e58c174a-81d2-5c3c-32cc-34b8de4a52e9",
+  "display_override": [
+    "standalone"
+  ],
+  "categories": [
+    "business"
+  ],
+  "related_applications": [
+    {
+      "platform": "chrome_web_store",
+      "url": "https://localhost:3000",
+      "id": ""
+    }
+  ],
+  "icons": [
+    {
+      "src": "/img/pwa/48.png",
+      "type": "image/png",
+      "sizes": "48x48",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/64.png",
+      "type": "image/png",
+      "sizes": "64x64",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/128.png",
+      "type": "image/png",
+      "sizes": "128x128",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/144.png",
+      "type": "image/png",
+      "sizes": "144x144",
+      "purpose": "any"
+    },
+    {
+      "src": "/img/pwa/192.png",
+      "type": "image/png",
+      "sizes": "192x192",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/256.png",
+      "type": "image/png",
+      "sizes": "256X256",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/512.png",
+      "type": "image/png",
+      "sizes": "512x512",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/img/pwa/1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/img/pwa/512.png"
+    }
+  ],
+  "features": [    
+    "Cross Platform",
+    "fast",
+    "simple"
+  ],  
+  "shortcuts": [
+    {
+      "name": "Perfil",
+      "short_name": "Perfil",
+      "description": "Atalho para perfil",
+      "url": "/user",
+      "icons": [
+        {
+          "src": "/img/pwa/ATALHO.png",
+          "type": "image/png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ],
+  "share_target": {
+    "action": "share",
+    "method": "GET",
+    "enctype": "application/x-www-form-urlencoded",
+    "params": {
+      "title": "PONTO",
+      "text": "Brandev",
+      "url": "https://localhost:3000"
+    }
+  },
+  "protocol_handlers": [
+    {
+      "protocol":"web+home",
+      "url":"/home?type=%s"
+    }
+  ],
+  "file_handlers": [
+    {
+      "action": ".",
+      "accept": {
+        "text/*": [".txt"]
+      }
+    }
+  ]
+}
