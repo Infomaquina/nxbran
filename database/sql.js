@@ -19,8 +19,9 @@ const pool = mysql.createPool({
 });
 
 const executeQuery = async(query, data)=>{
+   let connection
    try {
-      const connection = await pool.getConnection();      
+      connection = await pool.getConnection();      
       const [result] = await connection.query(query,data);
       connection.release();
 
@@ -28,6 +29,10 @@ const executeQuery = async(query, data)=>{
    } catch (error) {
       console.log(error);
       return error      
+   } finally{
+      if(connection){
+         connection.release()
+      }
    }
 }
 
