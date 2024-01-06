@@ -1,11 +1,12 @@
-import executeQuery from '../../../database/sql'
+import executeQuery from '@/database/sql'
 import { getServerSession } from "next-auth"
 import { authOptions } from "../../api/auth/[...nextauth]/route"
 import { format } from 'date-fns';
 import { Button } from "react-bootstrap";
 import { revalidatePath } from 'next/cache';
+import Link from 'next/link';
 
-export default async function Controle() {
+export default async function Controle({ searchParams }) {
 
    const hoje = format(new Date(), 'yyyy-MM-dd');
    const session = await getServerSession(authOptions)
@@ -16,7 +17,6 @@ export default async function Controle() {
       saida = 'secondary', s = 'disabled',
       mmt = -1
         
-         console.log('aqui');
       let user = await executeQuery("SELECT * FROM registros WHERE data LIKE ? AND id_user = ? ORDER BY id DESC LIMIT 1", [hoje+'%',session.user.id]);
       if(user !== undefined && user.length > 0){         
          mmt = user[0].momento;
@@ -47,16 +47,19 @@ export default async function Controle() {
 
          revalidatePath('/controle');
       }
+      const show = searchParams?.show;
 
       return (<>
-         <form action={revalidar}>
-         <div className="d-grid gap-3 mt-4">
-            <Button type='submit' disabled={e} variant={entrada}>Entrada</Button>
-            <Button type='submit' disabled={i} variant={intervalo}>Intervalo</Button>
-            <Button type='submit' disabled={r} variant={retorno}>Retorno</Button>
-            <Button type='submit' disabled={s} variant={saida}>Saída</Button>
-         </div>
-         </form>
+         {/* <form action={revalidar}> */}
+            <div className="d-grid gap-3 mt-4">
+               <Button type='button' disabled={e} variant={entrada}>
+                  <Link href="/controle/confirm" >Entrada</Link>
+               </Button>
+               <Button type='submit' disabled={i} variant={intervalo}>Intervalo</Button>
+               <Button type='submit' disabled={r} variant={retorno}>Retorno</Button>
+               <Button type='submit' disabled={s} variant={saida}>Saída</Button>
+            </div>
+         {/* </form> */}
       </>
       );
 
