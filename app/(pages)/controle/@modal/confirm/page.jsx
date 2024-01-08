@@ -2,11 +2,12 @@
 import { useRouter } from 'next/navigation'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { getCookie } from "cookies-next";
+import { useCookies } from 'next-client-cookies';
 
 export default function Confirm({searchParams}){
    const router = useRouter()
-   console.log(getCookie());
+   const cookies = useCookies();
+   const session = JSON.parse(cookies.get('ponto'));
 
    return (
       <div className="modal-overlay">
@@ -14,7 +15,7 @@ export default function Confirm({searchParams}){
          >
             <Modal.Dialog>
                <Modal.Header>
-                  <Modal.Title>Fulano</Modal.Title>
+                  <Modal.Title>{session['name']}</Modal.Title>
                </Modal.Header>
 
                <Modal.Body>

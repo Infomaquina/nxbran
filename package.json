@@ -27,6 +27,7 @@
     "mysql2": "^3.6.5",
     "next": "14.0.4",
     "next-auth": "^4.24.5",
+    "next-client-cookies": "^1.1.0",
     "nookies": "^2.5.2",
     "react": "^18",
     "react-bootstrap": "^2.9.2",

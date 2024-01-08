@@ -5,14 +5,14 @@ import TwitterProvider from "next-auth/providers/twitter";
 import executeQuery from '../../../../database/sql'
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
-import { setCookie } from "cookies-next";
+import { getCookies } from 'next-client-cookies/server';
+import { stringify } from "querystring";
 
 const generateAccessToken = (user) => {
-  const accessToken = sign({ userId: user.id }, process.env.NEXTAUTH_SECRET, {
-    expiresIn: '30h',
-  });
-  setCookie("ponto",user, { maxAge: 60 * 6 * 24 })
-  return accessToken;
+   const accessToken = sign({ userId: user.id }, process.env.NEXTAUTH_SECRET, {
+      expiresIn: '30h',
+   });
+   return accessToken;
 };
 
 export const authOptions = {
@@ -31,6 +31,16 @@ export const authOptions = {
                if (!user || !(await bcrypt.compare(credentials.password, user[0].password))) {
                   return null;
                }
+               let cookie = {
+                  id: user[0].id,
+                  name: user[0].name,
+                  email: user[0].email,
+                  level: user[0].level,
+                  status: user[0].status,
+                  image: user[0].image,
+               }
+               const cookies = getCookies();
+               cookies.set('ponto', JSON.stringify(cookie));
 
                const token = generateAccessToken(user[0]);
                await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
@@ -65,6 +75,7 @@ export const authOptions = {
          session.user.level = token.user.level,
          session.user.status = token.user.status,
          session.user.token = token.user.token 
+
          return session
       }
   }

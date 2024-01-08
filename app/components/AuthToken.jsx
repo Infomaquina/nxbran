@@ -2,13 +2,13 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "../api/auth/[...nextauth]/route"
 import executeQuery from "@/database/sql";
 
-
-export default async function AuthToken() {
+export default async function AuthToken(){
    const session = await getServerSession(authOptions)
 
    if(!session || !validateToken(session.token, session.id)){
       return false
-   }
+   }   
+
    return true
 }
 
