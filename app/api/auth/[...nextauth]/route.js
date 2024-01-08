@@ -5,11 +5,13 @@ import TwitterProvider from "next-auth/providers/twitter";
 import executeQuery from '../../../../database/sql'
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
+import { setCookie } from "cookies-next";
 
 const generateAccessToken = (user) => {
   const accessToken = sign({ userId: user.id }, process.env.NEXTAUTH_SECRET, {
     expiresIn: '30h',
   });
+  setCookie("ponto",user, { maxAge: 60 * 6 * 24 })
   return accessToken;
 };
 
@@ -32,7 +34,6 @@ export const authOptions = {
 
                const token = generateAccessToken(user[0]);
                await executeQuery("UPDATE users SET token = ? WHERE id = ?", [token, user[0].id]);
-               // user[0].token = token;
 
                return user[0]  
 

@@ -26,4 +26,6 @@ npm i mysql2
 ```npm i animate.css --save```
 ## DATE
 ```npm i date-fns```
+## COOKIES
+```npm i nookies```
 

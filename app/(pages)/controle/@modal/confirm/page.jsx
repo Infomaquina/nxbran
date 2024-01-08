@@ -2,30 +2,31 @@
 import { useRouter } from 'next/navigation'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import { getCookie } from "cookies-next";
 
-
-export default function Confirm(){
+export default function Confirm({searchParams}){
    const router = useRouter()
-   return (<>
-          <div
-      className="modal show"
-      style={{ display: 'block', position: 'initial' }}
-    >
-      <Modal.Dialog>
-        <Modal.Header>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
+   console.log(getCookie());
 
-        <Modal.Body>
-          <p>Modal body text goes here.</p>
-        </Modal.Body>
+   return (
+      <div className="modal-overlay">
+         <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
+         >
+            <Modal.Dialog>
+               <Modal.Header>
+                  <Modal.Title>Fulano</Modal.Title>
+               </Modal.Header>
 
-        <Modal.Footer>
-          <Button  onClick={() => router.back()} variant="secondary">Close</Button>
-          <Button variant="primary">Save changes</Button>
-        </Modal.Footer>
-      </Modal.Dialog>
-    </div>
-   </>
-  )
+               <Modal.Body>
+                  <p>Confirma a <strong>{searchParams.escolha}</strong>?</p>
+               </Modal.Body>
+
+               <Modal.Footer>
+                  <Button onClick={() => router.back()} variant="secondary">Não, voltar</Button>
+                  <Button variant="primary">Sim, confirmo</Button>
+               </Modal.Footer>
+            </Modal.Dialog>
+         </div>
+      </div>
+   )
 }

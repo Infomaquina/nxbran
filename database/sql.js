@@ -1,40 +1,32 @@
-import mysql from 'mysql2/promise';
+import mysql from 'mysql2';
 import dotenv from 'dotenv';
 
-dotenv.config(); // Carrega as variáveis de ambiente do arquivo .env
+dotenv.config();
 
-const {
-  DB_HOST,
-  DB_USER,
-  DB_PASSWORD,
-  DB_DATABASE,
-} = process.env;
+const pool = async function MySQL() {
+   const connection = mysql.createPool({
+      host: process.env.DB_HOST,
+      user: process.env.DB_USER,
+      database: process.env.DB_DATABASE,
+      password: process.env.DB_PASSWORD
+   });
 
-const pool = mysql.createPool({
-  host: DB_HOST,
-  user: DB_USER,
-  password: DB_PASSWORD,
-  database: DB_DATABASE,
-  connectionLimit: 10,
-});
+   return connection.promise();
+}
 
-const executeQuery = async(query, data)=>{
-   let connection
+export default async function conn(query, data) {
+   const sql = await pool();
+
    try {
-      connection = await pool.getConnection();      
-      const [result] = await connection.query(query,data);
-      connection.release();
-
-      return result
+      const [result] = await sql.query(query, data);
+      return result;
    } catch (error) {
-      console.log(error);
-      return error      
-   } finally{
-      if(connection){
-         connection.release()
+      console.error(error);
+      throw error;
+   } finally {
+      // Garanta que a conexão seja sempre liberada, mesmo em caso de erro
+      if (sql) {
+         await sql.end();
       }
    }
 }
-
-export default executeQuery;
-
