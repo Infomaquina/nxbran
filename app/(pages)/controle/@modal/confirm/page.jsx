@@ -1,10 +1,11 @@
 'use client'
-import { useRouter } from 'next/navigation'
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { useCookies } from 'next-client-cookies';
 import ServerAction from '@/app/components/ServerAction';
+import { useRouter } from 'next/navigation'
+import { useCookies } from 'next-client-cookies';
 import { useFormState, useFormStatus } from 'react-dom';
+
 const initialState = {
    message : false
 }
@@ -15,10 +16,6 @@ export default function Confirm({searchParams}){
    const session = JSON.parse(cookies.get('ponto'));
    const [ state, formAction ] = useFormState(ServerAction, initialState)
    const { pending } = useFormStatus()
-     
-   if(state?.message){
-      router.back()
-   }
 
    return (
       <div className="modal-overlay">
@@ -35,9 +32,9 @@ export default function Confirm({searchParams}){
 
                <Modal.Footer>   
                   <Button onClick={() => router.back()} variant="secondary">Não, voltar</Button>
-                  <form method='post' action={formAction}>
+                  <form action={formAction}>
                      <input type="hidden" name="momento" id="momento" value={searchParams.momento} />
-                     <Button type='submit' variant="primary">{pending? "Registrando..." : "Sim, confirmo"}</Button>   
+                     <Button type='submit' onClick={() => router.back()} variant="primary">{pending? "Registrando..." : "Sim, confirmo"}</Button>   
                   </form>
                </Modal.Footer>
             </Modal.Dialog>

@@ -41,7 +41,6 @@ export default async function Controle() {
          }
       }
 
-
       return (<>
          <div className="d-grid gap-4 mt-5">
             <Link href="/controle/confirm?escolha=entrada&momento=0" className={entrada}>
@@ -53,7 +52,7 @@ export default async function Controle() {
             <Link href="/controle/confirm?escolha=retorno&momento=2" className={retorno} disabled={r}>
                <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
             </Link>
-            <Link href="/controle/confirm?escolha=saída&momento=2" className={saida} disabled={s}>
+            <Link href="/controle/confirm?escolha=saída&momento=3" className={saida} disabled={s}>
                <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
             </Link>
          </div>
