@@ -2,7 +2,6 @@ import executeQuery from '@/database/sql'
 import { getServerSession } from "next-auth"
 import { authOptions } from "../../api/auth/[...nextauth]/route"
 import { format } from 'date-fns';
-import { revalidatePath } from 'next/cache';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCirclePlay } from '@fortawesome/free-solid-svg-icons'
 import { faCirclePause } from '@fortawesome/free-solid-svg-icons'
@@ -23,51 +22,41 @@ export default async function Controle() {
       let user = await executeQuery("SELECT * FROM registros WHERE data LIKE ? AND id_user = ? ORDER BY id DESC LIMIT 1", [hoje+'%',session.user.id]);
       if(user !== undefined && user.length > 0){         
          mmt = user[0].momento;
-         entrada = 'secondary', e = 'disabled'
+         entrada = 'btn btn-secondary btn-lg shadow', e = 'disabled'
          if(mmt == 0){
-            intervalo = 'primary'
+            intervalo = 'btn btn-primary btn-lg shadow'
             i = ''
          }
          if(mmt == 1){
-            retorno = 'primary'
+            retorno = 'btn btn-primary btn-lg shadow'
             r = ''
          }
          if(mmt == 2){
-            saida = 'primary'
+            saida = 'btn btn-primary btn-lg shadow'
             s = ''
          }
          if(mmt == 3){
-            entrada = 'secondary'
+            entrada = 'btn btn-secondary btn-lg shadow'
             s = 'disabled'
          }
       }
 
-      const revalidar = async () =>{
-         'use server'
-         let momento = mmt + 1;
-         let data = format(new Date(), 'yyyy-MM-dd HH:mm:ss');
-         await executeQuery("INSERT INTO registros (data,id_user,momento) VALUES (?,?,?)", [data,session.user.id,momento]);
-
-         revalidatePath('/controle');
-      }
 
       return (<>
-         {/* <form action={revalidar}> */}
-            <div className="d-grid gap-4 mt-5">
-               <Link href="/controle/confirm?escolha=entrada" className={entrada}>
-                  <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Entrada
-               </Link>
-               <Link href="/controle/confirm?escolha=intervalo" className={intervalo} disabled={i}>
-                  <FontAwesomeIcon icon={faCirclePause} className='me-2' />Intervalo
-               </Link>
-               <Link href="/controle/confirm?escolha=retorno" className={retorno} disabled={r}>
-                  <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
-               </Link>
-               <Link href="/controle/confirm?escolha=saída" className={saida} disabled={s}>
-                  <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
-               </Link>
-            </div>
-         {/* </form> */}
+         <div className="d-grid gap-4 mt-5">
+            <Link href="/controle/confirm?escolha=entrada&momento=0" className={entrada}>
+               <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Entrada
+            </Link>
+            <Link href="/controle/confirm?escolha=intervalo&momento=1" className={intervalo} disabled={i}>
+               <FontAwesomeIcon icon={faCirclePause} className='me-2' />Intervalo
+            </Link>
+            <Link href="/controle/confirm?escolha=retorno&momento=2" className={retorno} disabled={r}>
+               <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
+            </Link>
+            <Link href="/controle/confirm?escolha=saída&momento=2" className={saida} disabled={s}>
+               <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
+            </Link>
+         </div>
       </>
       );
 
