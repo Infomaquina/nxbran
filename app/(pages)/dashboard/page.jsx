@@ -1,10 +1,5 @@
-import ButtonLogout from "../../components/ButtonLogout";
+import FullCalendar from '@/app/components/FullCalendar';
 
 export default function Dashboard() {
-   return (
-      <div>
-         <h1 className="text-primary">Dashboard</h1>
-         <ButtonLogout />
-      </div>
-   );
+   return (<><FullCalendar/></>);
 }

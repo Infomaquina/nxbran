@@ -1,12 +1,9 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import GoogleProvider from "next-auth/providers/google";
-import TwitterProvider from "next-auth/providers/twitter";
 import executeQuery from '../../../../database/sql'
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { getCookies } from 'next-client-cookies/server';
-import { stringify } from "querystring";
 
 const generateAccessToken = (user) => {
    const accessToken = sign({ userId: user.id }, process.env.NEXTAUTH_SECRET, {
@@ -52,14 +49,6 @@ export const authOptions = {
                return null;
             }
          }
-      }),
-      GoogleProvider({
-         clientId: process.env.GOOGLE_CLIENT_ID,
-         clientSecret: process.env.GOOGLE_CLIENT_SECRET
-      }),
-      TwitterProvider({
-         clientId: process.env.TWITTER_CLIENT_ID,
-         clientSecret: process.env.TWITTER_CLIENT_SECRET
       })
   ],
   pages: {
