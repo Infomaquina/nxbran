@@ -11,6 +11,7 @@ const FullCalendar = () => {
   useEffect(() => {
     const calendar = new Calendar(calendarRef.current, {
       locale: 'brLocale',
+      height: 500,
       headerToolbar: {
          left: 'title',
          center: '',
@@ -24,10 +25,11 @@ const FullCalendar = () => {
       plugins: [dayGridPlugin, interactionPlugin],
       initialView: 'dayGridMonth',
       events: [
-        { title: 'Cíntia', date: '2024-01-10' },
-        { title: 'Bia', date: '2024-01-10' },
-        { title: 'Bia', date: '2024-01-11' },
-        { title: 'Bia', date: '2024-01-12' }
+        { title: 'Cíntia', date: '2024-01-10', color: 'red' },
+        { title: 'Bia', date: '2024-01-10', color: 'green' },
+        { title: 'Bia', date: '2024-01-11', color: 'green' },
+        { title: 'Bia', date: '2024-01-12', color: 'green' },
+        { title: 'Jana', date: '2024-01-01', color: 'purple' }
       ]
     });
     calendar.render();

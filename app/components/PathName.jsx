@@ -3,6 +3,7 @@ import { usePathname } from 'next/navigation'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faRectangleList } from '@fortawesome/free-solid-svg-icons'
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons'
+import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import 'animate.css';
 
 export default function PathName() {
@@ -10,10 +11,12 @@ export default function PathName() {
    const PathName = {
       '/dashboard': 'Dashboard',
       '/controle': 'Controle',
+      '/calendario': 'Calendario',
    }
    const icone = {
       '/dashboard': faRectangleList,
       '/controle': faFingerprint,
+      '/calendario': faCalendarDays,
    }
    
    return (<>

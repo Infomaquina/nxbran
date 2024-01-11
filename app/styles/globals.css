@@ -1,6 +1,9 @@
 @import 'custom.css';
 @import '@fortawesome/fontawesome-svg-core/styles.css';
-
+*{
+  margin: 0px;
+  padding: 0px;
+}
 .App {
   background-color: white;
 }
