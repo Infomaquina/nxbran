@@ -28,7 +28,7 @@ export default function FormLogin() {
             return
          }
 
-         route.replace('/dashboard')
+         route.replace('/controle')
    }
 
 

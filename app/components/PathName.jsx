@@ -9,12 +9,10 @@ import 'animate.css';
 export default function PathName() {
    
    const PathName = {
-      '/dashboard': 'Dashboard',
       '/controle': 'Controle',
       '/calendario': 'Calendario',
    }
    const icone = {
-      '/dashboard': faRectangleList,
       '/controle': faFingerprint,
       '/calendario': faCalendarDays,
    }
