@@ -69,21 +69,21 @@ export default async function Controle() {
             <h5 className={user[1]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
                <FontAwesomeIcon icon={user[1]? faCircleCheck : faClock} className='me-2'/>{user[1]? user[1].data.split(' ')[1] : intervaloPrev}
             </h5>
-            <Link href={user[0]? '' : "/controle/confirm?escolha=intervalo&momento=1"} className={intervalo} disabled={i}>
+            <Link href={user[1]? '' : "/controle/confirm?escolha=intervalo&momento=1"} className={intervalo} disabled={i}>
                <FontAwesomeIcon icon={faCirclePause} className='me-2' />Intervalo
             </Link>
 
             <h5 className={user[2]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
                <FontAwesomeIcon icon={user[2]? faCircleCheck : faClock} className='me-2'/>{user[2]? user[2].data.split(' ')[1] : retornoPrev}
             </h5>
-            <Link href={user[0]? '' : "/controle/confirm?escolha=retorno&momento=2"} className={retorno} disabled={r}>
+            <Link href={user[2]? '' : "/controle/confirm?escolha=retorno&momento=2"} className={retorno} disabled={r}>
                <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
             </Link>
 
             <h5 className={user[3]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
                <FontAwesomeIcon icon={user[3]? faCircleCheck : faClock} className='me-2'/>{user[3]? user[3].data.split(' ')[1] : saidaPrev}
             </h5>
-            <Link href={user[0]? '' : "/controle/confirm?escolha=saída&momento=3"} className={saida} disabled={s}>
+            <Link href={user[3]? '' : "/controle/confirm?escolha=saída&momento=3"} className={saida} disabled={s}>
                <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
             </Link>
          </div>
