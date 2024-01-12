@@ -4,14 +4,19 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import brLocale from '@fullcalendar/core/locales/pt-br';
+import { useRouter } from 'next/navigation';
 
 const FullCalendar = () => {
   const calendarRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const calendar = new Calendar(calendarRef.current, {
       locale: 'brLocale',
-      height: 500,
+      height: 500,  
+      dateClick: function(info) {
+         router.push('/calendario/confirm?data='+info.dateStr, { scroll: false })
+      },
       headerToolbar: {
          left: 'title',
          center: '',
@@ -33,10 +38,10 @@ const FullCalendar = () => {
       ]
     });
     calendar.render();
-  }, []);
+  });
 
   return (
-    <div ref={calendarRef}></div>
+    <div style={{position:'relative', zIndex:0}} ref={calendarRef}></div>
   );
 };
 
