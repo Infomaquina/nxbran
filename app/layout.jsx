@@ -30,12 +30,12 @@ export const metadata = {
       type: 'website',
    },
    icons: {
-   icon: '/public/img/icon.ico',
-   shortcut: '/public/img/icon.ico',
-   apple: '/public/img/icon.ico',
+   icon: '/img/icon.ico',
+   shortcut: '/img/icon.ico',
+   apple: '/img/icon.ico',
    other: {
    rel: 'apple-touch-icon-precomposed',
-   url: '/public/img/icon.ico',
+   url: '/img/icon.ico',
    },
    manifest: '/app.webmanifest',
 },
