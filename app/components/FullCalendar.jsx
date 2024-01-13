@@ -1,9 +1,9 @@
 'use client'
-import React, { useRef, useEffect } from 'react';
-import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import brLocale from '@fullcalendar/core/locales/pt-br';
+import { Calendar } from '@fullcalendar/core';
+import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 const FullCalendar = () => {
