@@ -1,6 +1,7 @@
 'use client'
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import ToggleButton from 'react-bootstrap/ToggleButton';
 import ServerCalendario from "@/app/components/ServerCalendario"
 import { useRouter } from 'next/navigation'
 import { useSession } from "next-auth/react";
@@ -15,6 +16,7 @@ export default function Confirm({searchParams}){
    const { pending } = useFormStatus()
    const [users, setUsers] = useState([])
    const [folgas, setFolgas] = useState([]);
+   const [checkboxStates, setCheckboxStates] = useState({});
 
    useEffect(() => {
 
@@ -26,6 +28,14 @@ export default function Confirm({searchParams}){
             setUsers(data.users);
             setFolgas(data.folgas);
 
+            const initialCheckboxStates = {};
+            data.users.forEach((user) => {
+               if(data.folgas.some((folga) => folga.id_user === user.id)){
+                  initialCheckboxStates[user.id] = true;               
+               }
+            });
+            setCheckboxStates(initialCheckboxStates);
+
          } catch (error) {
             console.log("ERRO ao pegar users",error);
          }
@@ -33,6 +43,14 @@ export default function Confirm({searchParams}){
       fetchData()
    },[searchParams.data])
    
+   const handleCheckboxChange = (userId, isChecked) => {
+
+      setCheckboxStates((prevStates) => ({
+         ...prevStates,
+         [userId]: isChecked,
+      }));
+   };
+
    return (
       <div className="modal-overlay">
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
@@ -44,11 +62,22 @@ export default function Confirm({searchParams}){
 
                <form action={formAction}>
                <Modal.Body>               
-                  {users.map((users)=>(
-                     <Button key={users.id} variant="outline-primary" size="lg">
-                        {users.name}
-                     </Button>
-                  ))}
+                  <div className="d-grid gap-2">
+                     {users.map((users)=>(
+                        <ToggleButton
+                           key={users.id}
+                           className="mb-2"
+                           id={'i'+users.id}
+                           type="checkbox"
+                           variant="outline-primary"
+                           checked={checkboxStates[users.id] || false}
+                           value={users.id}
+                           onChange={(e) => handleCheckboxChange(users.id, e.currentTarget.checked)}
+                           >
+                           {users.name}
+                        </ToggleButton>
+                     ))}
+                  </div>
                </Modal.Body>
 
                <Modal.Footer>   
