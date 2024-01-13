@@ -67,11 +67,13 @@ export default function Confirm({searchParams}){
                <form action={formAction}>
                <Modal.Body>               
                   <div className="d-grid gap-2">
-                     {users.map((users)=>(
+                     <input type="hidden" name="data" value={searchParams.data} />
+                     {users.map((users)=>(<>                     
                         <ToggleButton
                            key={users.id}
                            className="mb-2"
                            id={'i'+users.id}
+                           name="folgas"
                            type="checkbox"
                            variant="outline-primary"
                            checked={checkboxStates[users.id] || false}
@@ -80,6 +82,7 @@ export default function Confirm({searchParams}){
                            >
                            {users.name}
                         </ToggleButton>
+                     </>
                      ))}
                   </div>
                </Modal.Body>
