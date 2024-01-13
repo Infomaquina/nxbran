@@ -4,13 +4,13 @@ import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
 import ServerCalendario from "@/app/components/ServerCalendario"
 import { useRouter } from 'next/navigation'
-import { useSession } from "next-auth/react";
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useState } from 'react';
+import { format, parseISO } from 'date-fns';
+import ptBR from 'date-fns/locale/pt-BR';
 
 
 export default function Confirm({searchParams}){
-   const { data: session, status } = useSession();
    const router = useRouter()
    const [ state, formAction ] = useFormState(ServerCalendario)
    const { pending } = useFormStatus()
@@ -44,12 +44,16 @@ export default function Confirm({searchParams}){
    },[searchParams.data])
    
    const handleCheckboxChange = (userId, isChecked) => {
-
       setCheckboxStates((prevStates) => ({
          ...prevStates,
          [userId]: isChecked,
       }));
    };
+
+   function formatarData(dia){
+      const result =  format(parseISO(dia), "EEEE, dd 'de' MMMM 'de' yyyy", { locale: ptBR });
+      return result.replace(/\b\w/g, (match) => match.toLocaleUpperCase());
+   }
 
    return (
       <div className="modal-overlay">
@@ -57,7 +61,7 @@ export default function Confirm({searchParams}){
          >
             <Modal.Dialog>
                <Modal.Header>
-                  <Modal.Title>{searchParams.data}</Modal.Title>
+                  <Modal.Title>{formatarData(searchParams.data)}</Modal.Title>
                </Modal.Header>
 
                <form action={formAction}>

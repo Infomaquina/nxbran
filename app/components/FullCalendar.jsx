@@ -5,17 +5,21 @@ import brLocale from '@fullcalendar/core/locales/pt-br';
 import { Calendar } from '@fullcalendar/core';
 import React, { useRef, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
+import { useSession } from "next-auth/react";
 
 const FullCalendar = () => {
-  const calendarRef = useRef(null);
-  const router = useRouter();
+   const calendarRef = useRef(null);
+   const router = useRouter();
+   const { data: session, status } = useSession();
 
   useEffect(() => {
     const calendar = new Calendar(calendarRef.current, {
       locale: 'brLocale',
       height: 500,  
       dateClick: function(info) {
-         router.push('/calendario/confirm?data='+info.dateStr, { scroll: false })
+         if(session.user.level == 0){
+            router.push('/calendario/confirm?data='+info.dateStr, { scroll: false })         
+         }
       },
       headerToolbar: {
          left: 'title',
