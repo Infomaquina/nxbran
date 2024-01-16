@@ -32,7 +32,7 @@ const FullCalendar = () => {
       }
 
       const calendar = new Calendar(calendarRef.current, {
-         locale: 'brLocale',
+         locale: brLocale,
          height: 500,  
          dateClick: function(info) {
             if(session.user.level == 0){
