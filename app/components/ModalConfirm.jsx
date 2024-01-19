@@ -42,13 +42,13 @@ export default function Confirm({date,folgas,users,close}){
       let folgas = formData.getAll('folgas');
       let data = formData.get('data')
       
-      // try {      
-      //    await fetch(`/api/UpdateCalendario?data=`+data,{
-      //       method: 'DELETE'   
-      //    })     
-      // } catch (error) {
+      try {      
+         await fetch(`/api/UpdateCalendario?data=`+data,{
+            method: 'DELETE'   
+         })     
+      } catch (error) {
          
-      // }
+      }
       
       for (const id_user of folgas){
          await fetch(`/api/UpdateCalendario`,{

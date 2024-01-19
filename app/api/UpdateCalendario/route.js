@@ -9,12 +9,13 @@ export async function POST(req, res){
    return NextResponse.json('ok')
 }
 
-// export async function DELETE(req, res){
-//    try {      
-//       const formData = await req.formData()
-//       const date = formData.get('date')
-//       return NextResponse.json({ date, id_user })
-//    } catch (error) {
+export async function DELETE(req, res){
+   try {      
+      const url = new URL(req.url)
+      const data = url.searchParams.get('data')
+      await executeQuery("DELETE FROM folgas WHERE data =?",[data])
+      return NextResponse.json('ok')
+   } catch (error) {
       
-//    } 
-// }
+   } 
+}

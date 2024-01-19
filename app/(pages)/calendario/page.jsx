@@ -6,6 +6,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalConfirm from "@/app/components/ModalConfirm";
 import React, { useEffect, useState } from 'react';
+import { useSession } from 'next-auth/react';
 
 export default function Calendario() {
 
@@ -14,11 +15,21 @@ export default function Calendario() {
    const [events, setEvent] = useState([])
    const [users, setUsers] = useState([])
    const [folgas, setFolgas] = useState([]);
+   const {data : session, status} = useSession();
 
    const handleDateClick = (info) => {
-      setFolgas(events.filter((folga) => folga.date === info.dateStr))
-      setGetDate(info.dateStr)
-      setModal(true)
+      if(session.user.level == 0){
+         let data
+         if(info.dateStr == undefined){
+            let string = JSON.stringify(info.event.start).replace(/['"]/g, '');
+            data = string.split('T')[0]
+         }else{
+            data = info.dateStr
+         }
+         setFolgas(events.filter((folga) => folga.date === data))
+         setGetDate(data)
+         setModal(true)      
+      }
    }
 
    useEffect(() => {
@@ -47,6 +58,7 @@ export default function Calendario() {
             editable
             selectable
             dateClick={handleDateClick}
+            eventClick={handleDateClick}
             initialView="dayGridMonth"
             headerToolbar={{
                left: 'title',
