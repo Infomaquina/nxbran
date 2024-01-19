@@ -34,7 +34,7 @@ export default function Confirm({searchParams}){
                   <form action={formAction}>
                      <input type="hidden" name="momento" id="momento" value={searchParams.momento} />
                      <input type="hidden" name="idUser" id="idUser" value={session.user.id} />
-                     <Button type='submit' onClick={() => router.back()} variant="primary">{pending? "Registrando..." : "Sim, confirmo"}</Button>   
+                     <Button type='submit' onClick={() => router.back()} variant="dark text-success">{pending? "Registrando..." : "Sim, confirmo"}</Button>   
                   </form>
                </Modal.Footer>
             </Modal.Dialog>

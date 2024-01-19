@@ -7,6 +7,9 @@ import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalConfirm from "@/app/components/ModalConfirm";
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-icons/font/bootstrap-icons.css'
 
 export default function Calendario() {
 
@@ -52,9 +55,10 @@ export default function Calendario() {
    }
 
    return (<>
-      <div  style={{position:'relative', zIndex:0}}>
+      <div style={{position:'relative', zIndex:0}}>
          <FullCalendar
-            plugins={[ dayGridPlugin, interactionPlugin ]}
+            plugins={[ dayGridPlugin, interactionPlugin, bootstrap5Plugin ]}
+            themeSystem={{bootstrap5Plugin}}
             editable
             selectable
             dateClick={handleDateClick}

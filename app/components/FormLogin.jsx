@@ -33,26 +33,26 @@ export default function FormLogin() {
 
 
   return (
-    <form className="Auth-form" onSubmit={handleSubmit}>
+    <form className="Auth-form bg-dark" onSubmit={handleSubmit}>
       
       <div className="Auth-form-content">
          <h3 className="Auth-form-title">
             <Image src="/img/pwa/p.png" alt="Logo" width={100} height={30}/>
          </h3>
          <div className="form-group mt-3">
-            <label>
+            <label className="text-white">
                <FontAwesomeIcon icon={faEnvelope} className="me-2" />E-mail
             </label>
             <input type="email" className="form-control mt-1" placeholder="Meu@email.com" onChange={(e) => setEmail(e.target.value)}/>
          </div>
          <div className="form-group mt-2">
-            <label>
+            <label className="text-white">
                <FontAwesomeIcon icon={faLock} className="me-2" />Senha
             </label>
             <input type="password" className="form-control mt-1" placeholder="Minha senha" onChange={(e) => setPassword(e.target.value)}/>
          </div>
          <div className="d-grid gap-2 mt-3">
-            <button type="submit" className="btn btn-primary">
+            <button type="submit" className="btn btn-success">
             <FontAwesomeIcon icon={faCircleRight} className="me-2" />Entrar
             </button>
          </div>

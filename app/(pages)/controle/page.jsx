@@ -14,7 +14,7 @@ export default async function Controle() {
    const hoje = format(new Date(), 'yyyy-MM-dd');
    const session = await UserSession()
    
-   let entrada = 'btn btn-primary btn-lg shadow', e = '',
+   let entrada = 'btn btn-dark text-success btn-lg shadow', e = '',
       intervalo = 'btn btn-secondary btn-lg shadow', i = 'disabled',
       retorno = 'btn btn-secondary btn-lg shadow', r = 'disabled',
       saida = 'btn btn-secondary btn-lg shadow', s = 'disabled',
@@ -39,15 +39,15 @@ export default async function Controle() {
          mmt = user[0].momento;
          entrada = 'btn btn-secondary btn-lg shadow', e = 'disabled'
          if(mmt == 0){
-            intervalo = 'btn btn-primary btn-lg shadow'
+            intervalo = 'btn btn-dark text-success btn-lg shadow'
             i = ''
          }
          if(mmt == 1){
-            retorno = 'btn btn-primary btn-lg shadow'
+            retorno = 'btn btn-dark text-success btn-lg shadow'
             r = ''
          }
          if(mmt == 2){
-            saida = 'btn btn-primary btn-lg shadow'
+            saida = 'btn btn-dark text-success btn-lg shadow'
             s = ''
          }
          if(mmt == 3){

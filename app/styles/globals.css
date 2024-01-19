@@ -4,8 +4,11 @@
   margin: 0px;
   padding: 0px;
 }
+body{
+   background-color: #525151;
+}
 .App {
-  background-color: white;
+  background-color: rgb(106, 106, 106);
 }
 
 .Auth-form-container {
@@ -59,4 +62,21 @@ label {
 
 .animate__animated {
   --animate-duration: 0.5s;
+}
+
+.fc-day {
+  background-color: #525151 !important;
+}
+.fc-day-today {
+  background-color: #858484 !important;
+}
+.fc-col-header-cell-cushion{
+   color: white;
+}
+.fc-daygrid-day-number{
+   color: white;
+}
+
+:root {
+  --fc-border-color: rgb(255, 255, 255);
 }
