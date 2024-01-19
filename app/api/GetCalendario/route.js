@@ -7,19 +7,24 @@ export async function GET(req) {
    if(req.method === 'GET'){
       try {       
 
-         let folgas = await executeQuery("SELECT u.name, f.data, u.cor FROM folgas f LEFT JOIN users u ON f.id_user = u.id").catch(error => {
+         let Qfolgas = await executeQuery("SELECT u.name, f.data, u.cor FROM folgas f LEFT JOIN users u ON f.id_user = u.id").catch(error => {
             console.error("Erro ao obter dados das folgas:", error);
-            folgas = [];
+            Qfolgas = [];
          })
 
-         const arrayRenomeado = folgas.map(item => ({
+         let users = await executeQuery("SELECT id,name,cor FROM users ORDER BY name").catch(error => {
+            console.error("Erro ao obter dados de usuários:", error);
+            users = [];
+         })
+
+         const folgas = Qfolgas.map(item => ({
             title: item.name,
             date: item.data,
             color: item.cor
          }));
          
 
-         return NextResponse.json(arrayRenomeado)
+         return NextResponse.json({folgas,users})
       
          
       } catch (error) {

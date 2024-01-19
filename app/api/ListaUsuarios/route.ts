@@ -8,7 +8,7 @@ export async function GET(req:NextRequest) {
          const url = new URL(req.url)
          const dia = url.searchParams.get("dia")         
 
-         let users = await executeQuery("SELECT id,name FROM users ORDER BY name").catch(error => {
+         let users = await executeQuery("SELECT id,name,cor FROM users ORDER BY name").catch(error => {
             console.error("Erro ao obter dados de usuários:", error);
             users = [];
          })

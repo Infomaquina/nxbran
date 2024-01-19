@@ -6,6 +6,7 @@ import { Calendar } from '@fullcalendar/core';
 import React, { useRef, useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useSession } from "next-auth/react";
+import ModalConfirm from "@/app/components/ModalConfirm"
 
 const FullCalendar = () => {
    const calendarRef = useRef(null);
@@ -13,6 +14,12 @@ const FullCalendar = () => {
    const { data: session, status } = useSession();
    const [events, setEvent] = useState([])
    const [dataLoaded, setDataLoaded] = useState(false)
+   const [modal, setModal] = useState(false)
+   const [getDate, setGetDate] = useState(null)
+
+   function closeModal(){
+      setModal(false)
+   }
 
    useEffect(() => {
       const fetchData = async ()=>{
@@ -36,7 +43,8 @@ const FullCalendar = () => {
          height: 500,  
          dateClick: function(info) {
             if(session.user.level == 0){
-               router.push('/calendario/confirm?data='+info.dateStr, { scroll: false })         
+               setGetDate(info.dateStr)
+               setModal(true)         
             }
          },
          headerToolbar: {
@@ -53,12 +61,14 @@ const FullCalendar = () => {
          initialView: 'dayGridMonth',
          events: events
       });
+
       calendar.render();
    },[events,router,session,dataLoaded]);
 
-   return (
+   return (<>
       <div style={{position:'relative', zIndex:0}} ref={calendarRef}></div>
-   );
+      {modal && <ModalConfirm date={getDate} close={closeModal} calendarRef={calendarRef} />}
+   </>);
 };
 
 export default FullCalendar;
