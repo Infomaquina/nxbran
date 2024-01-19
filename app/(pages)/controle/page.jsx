@@ -14,10 +14,10 @@ export default async function Controle() {
    const hoje = format(new Date(), 'yyyy-MM-dd');
    const session = await UserSession()
    
-   let entrada = 'btn btn-dark text-success btn-lg shadow', e = '',
-      intervalo = 'btn btn-secondary btn-lg shadow', i = 'disabled',
-      retorno = 'btn btn-secondary btn-lg shadow', r = 'disabled',
-      saida = 'btn btn-secondary btn-lg shadow', s = 'disabled',
+   let entrada = 'btn btn-success text-white btn-lg shadow', e = '',
+      intervalo = 'btn btn-secondary text-dark btn-lg shadow', i = 'disabled',
+      retorno = 'btn btn-secondary text-dark btn-lg shadow', r = 'disabled',
+      saida = 'btn btn-secondary text-dark btn-lg shadow', s = 'disabled',
       mmt = -1
         
       let user = await executeQuery("SELECT * FROM registros WHERE data LIKE ? AND id_user = ? ORDER BY id DESC", [hoje+'%',session.user.id]);
@@ -37,21 +37,21 @@ export default async function Controle() {
          saidaPrev = format(prev, 'HH:mm:ss')
 
          mmt = user[0].momento;
-         entrada = 'btn btn-secondary btn-lg shadow', e = 'disabled'
+         entrada = 'btn btn-secondary text-dark btn-lg shadow', e = 'disabled'
          if(mmt == 0){
-            intervalo = 'btn btn-dark text-success btn-lg shadow'
+            intervalo = 'btn btn-success text-white btn-lg shadow'
             i = ''
          }
          if(mmt == 1){
-            retorno = 'btn btn-dark text-success btn-lg shadow'
+            retorno = 'btn btn-success text-white btn-lg shadow'
             r = ''
          }
          if(mmt == 2){
-            saida = 'btn btn-dark text-success btn-lg shadow'
+            saida = 'btn btn-success text-white btn-lg shadow'
             s = ''
          }
          if(mmt == 3){
-            entrada = 'btn btn-secondary btn-lg shadow'
+            entrada = 'btn btn-secondary text-dark btn-lg shadow'
             s = 'disabled'
          }
       }
