@@ -59,20 +59,20 @@ export default function Calendario() {
          <FullCalendar
             plugins={[ dayGridPlugin, interactionPlugin, bootstrap5Plugin ]}
             themeSystem={{bootstrap5Plugin}}
+             titleFormat={{
+               month: 'long',
+               year: 'numeric'
+            }}
             editable
             selectable
+            aspectRatio={0.75}
             dateClick={handleDateClick}
             eventClick={handleDateClick}
             initialView="dayGridMonth"
             headerToolbar={{
                left: 'title',
                center: '',
-               right: ''
-            }}
-            footerToolbar={{
-               left: '',
-               center: '',
-               right: 'prev,next today'
+               right: 'prev,next'
             }}
             locale={brLocale}
             events={events}

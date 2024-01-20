@@ -77,6 +77,10 @@ label {
 .fc-daygrid-day-number{
    color: white;
 }
+.fc-toolbar { 
+   text-transform: capitalize; 
+   font-size: 14px;   
+}
 
 :root {
   --fc-border-color: rgb(255, 255, 255);
