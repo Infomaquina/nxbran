@@ -3,9 +3,8 @@ import { faFingerprint } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
 import Link from 'next/link'
-import 'animate.css';
 
-export default function NavBar() {
+export default async function FooterBar() {
    return (<>
       <nav className="navbar fixed-bottom bg-dark p-0">
          <div className="container-fluid">
