@@ -1,10 +1,9 @@
-import { authOptions } from "../api/auth/[...nextauth]/route";
-import { getServerSession } from "next-auth";
+import UserSession from "./UserSession";
 import Image from "next/image";
 import Link from "next/link";
 
 export default async function UserImage() {
-   const session = await getServerSession(authOptions);
+   const session = await UserSession();
    return (
       <>
          <Link href={'/user'}>
