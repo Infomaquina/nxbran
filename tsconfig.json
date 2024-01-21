@@ -34,6 +34,6 @@
   "app/api/ListaUsuarios/route.ts",
   "app/api/GetCalendario/route.js",
   "app/api/UpdateCalendario/route.js"
- ],
+, "app/api/UploadImage/route.ts", "app/components/UploadImage.jsx" ],
  "exclude": ["node_modules"]
 }
