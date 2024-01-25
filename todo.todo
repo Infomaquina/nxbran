@@ -23,13 +23,13 @@
 10/01/24:
 ✔ Senha mestra @done(24-01-10 17:31)
 ☐ Refatorar route access
-☐ Calendario de folgas
+✔ Calendario de folgas @done(24-01-25 15:47)
 ☐ Impedir funcionario de regitrar presença em dia de folga
 19/01/24:
 ✔ Reabilitar Delete no fetch para editar folgas @done(24-01-19 10:25)
 ✔ Tentar clicar em qualquer lugar do dia para abrir o modal @done(24-01-19 11:48)
 ✔ Limitar edição de folgas apenas para admin @done(24-01-19 12:33)
-☐ Theme bootstrap
+✘ Theme bootstrap @cancelled(24-01-25 15:46)
 ☐ Confirmação Toast ao inves de swal
 21/01/24:
 24/01/24:

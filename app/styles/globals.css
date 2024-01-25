@@ -81,6 +81,12 @@ label {
    text-transform: capitalize; 
    font-size: 14px;   
 }
+.fc-toolbar-title{
+   color: white
+}
+.fc button {
+   background-color: #3db103 !important;
+}
 
 :root {
   --fc-border-color: rgb(255, 255, 255);

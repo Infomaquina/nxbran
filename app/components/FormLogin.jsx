@@ -1,12 +1,12 @@
 "use client"
+import Image from "next/image"
 import { signIn } from "next-auth/react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
-import Image from "next/image"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCircleRight } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
-import { faCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function FormLogin() {
 

@@ -1,16 +1,18 @@
 'use client'
 import Modal from 'react-bootstrap/Modal';
-import Button from 'react-bootstrap/Button';
 import ToggleButton from 'react-bootstrap/ToggleButton';
-import { useFormState, useFormStatus } from 'react-dom';
+import ptBR from 'date-fns/locale/pt-BR';
+// import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect, useState } from 'react';
 import { format, parseISO } from 'date-fns';
-import ptBR from 'date-fns/locale/pt-BR';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+import { faReply } from '@fortawesome/free-solid-svg-icons'
+import Image from "next/image";
 
 
 export default function Confirm({date,folgas,users,close}){
 
-   const { pending } = useFormStatus()
    const [checkboxStates, setCheckboxStates] = useState({});
 
    useEffect(() => {
@@ -79,17 +81,21 @@ export default function Confirm({date,folgas,users,close}){
       close()
    }
 
+   function rand() {
+      return Math.floor(Math.random() * 100);
+   }
+
    return (
       <div className="modal-overlay">
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
          >
             <Modal.Dialog>
-               <Modal.Header>
+               <Modal.Header className='bg-dark text-white'>
                   <Modal.Title>{formatarData(date)}</Modal.Title>
                </Modal.Header>
 
                <form onSubmit={formAction}>
-               <Modal.Body>               
+               <Modal.Body className='bg-info'>               
                   <div className="d-grid gap-2">
                      <input type="hidden" name="data" value={date} />
                      {users.map((users)=>(                    
@@ -99,20 +105,21 @@ export default function Confirm({date,folgas,users,close}){
                            id={users.id}
                            name="folgas"
                            type="checkbox"
-                           variant="outline-primary"
+                           variant="outline-success"
                            checked={checkboxStates[users.id] || false}
                            value={users.id}
                            onChange={(e) => handleCheckboxChange(users.id, e.currentTarget.checked)}
-                           >
-                           {users.name}
+                           >                           
+                              <Image className="rounded-circle border border-2 border-white me-2" height={40} width={40} alt="Eu" src={`/img/users/${users.id}.jpg?${rand()}`}/>
+                           <strong>{users.name}</strong>
                         </ToggleButton>
                      ))}
                   </div>
                </Modal.Body>
 
-               <Modal.Footer>   
-                  <Button onClick={close} variant="secondary">Cancelar</Button>
-                     <Button type='submit' variant="primary">{pending? "Registrando..." : "Registrar"}</Button>   
+               <Modal.Footer className='bg-dark'>   
+                  <button onClick={close} className="btn btn-secondary shadow"><FontAwesomeIcon icon={faReply} /> Cancelar</button>
+                  <button type='submit' className='btn btn-success shadow text-white'><FontAwesomeIcon icon={faFloppyDisk} /> Registrar</button>   
                </Modal.Footer>
                </form>
             </Modal.Dialog>
