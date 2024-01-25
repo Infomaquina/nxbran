@@ -137,7 +137,7 @@ export default async function user() {
       </>) : null}
          <div className="row g-2 mt-2 mb-4">
             <div className="col-12 mb-4 text-end">
-               <button type="submit" className="btn btn-success shadow text-white">
+               <button type="submit" className="btn btn-success shadow">
                   <FontAwesomeIcon icon={faFloppyDisk} /> Salvar
                </button>
             </div>

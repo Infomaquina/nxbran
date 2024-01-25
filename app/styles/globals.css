@@ -18,6 +18,7 @@ body{
   align-items: center;
   width: 100vw;
   height: 100vh;
+  padding: 5%;
 }
 
 .Auth-form {
@@ -82,10 +83,10 @@ label {
    font-size: 14px;   
 }
 .fc-toolbar-title{
-   color: white
+   color: #b7e200
 }
 .fc button {
-   background-color: #3db103 !important;
+   background-color: #b7e200 !important;
 }
 
 :root {

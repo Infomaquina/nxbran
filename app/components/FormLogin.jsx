@@ -37,7 +37,7 @@ export default function FormLogin() {
       
       <div className="Auth-form-content">
          <h3 className="Auth-form-title">
-            <Image src="/img/pwa/p.png" alt="Logo" width={100} height={30}/>
+            <Image src="/img/pwa/P.png" alt="Logo" width={200} height={70}/>
          </h3>
          <div className="form-group mt-3">
             <label className="text-white">
