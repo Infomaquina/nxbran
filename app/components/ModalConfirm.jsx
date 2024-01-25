@@ -90,12 +90,12 @@ export default function Confirm({date,folgas,users,close}){
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
          >
             <Modal.Dialog>
-               <Modal.Header className='bg-dark text-white'>
+               <Modal.Header>
                   <Modal.Title>{formatarData(date)}</Modal.Title>
                </Modal.Header>
 
                <form onSubmit={formAction}>
-               <Modal.Body className='bg-info'>               
+               <Modal.Body>               
                   <div className="d-grid gap-2">
                      <input type="hidden" name="data" value={date} />
                      {users.map((users)=>(                    
@@ -110,16 +110,16 @@ export default function Confirm({date,folgas,users,close}){
                            value={users.id}
                            onChange={(e) => handleCheckboxChange(users.id, e.currentTarget.checked)}
                            >                           
-                              <Image className="rounded-circle border border-2 border-white me-2" height={40} width={40} alt="Eu" src={`/img/users/${users.id}.jpg?${rand()}`}/>
+                              <Image className="rounded-circle border border-2 border-dark me-2" height={40} width={40} alt="Eu" src={`/img/users/${users.id}.jpg?${rand()}`}/>
                            <strong>{users.name}</strong>
                         </ToggleButton>
                      ))}
                   </div>
                </Modal.Body>
 
-               <Modal.Footer className='bg-dark'>   
+               <Modal.Footer>   
                   <button onClick={close} className="btn btn-secondary shadow"><FontAwesomeIcon icon={faReply} /> Cancelar</button>
-                  <button type='submit' className='btn btn-success shadow text-white'><FontAwesomeIcon icon={faFloppyDisk} /> Registrar</button>   
+                  <button type='submit' className='btn btn-success shadow'><FontAwesomeIcon icon={faFloppyDisk} /> Registrar</button>   
                </Modal.Footer>
                </form>
             </Modal.Dialog>

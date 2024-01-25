@@ -12,7 +12,7 @@ const generateAccessToken = (user) => {
    return accessToken;
 };
 
-export const authOptions = {
+const authOptions = {
   providers: [
       CredentialsProvider({
          name: 'credentials',
