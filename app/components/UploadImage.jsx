@@ -52,7 +52,7 @@ export default function UploadImage({ id }) {
       />
       <Image
         src={file ? file : `/img/users/${id}.jpg`}
-        className="rounded border border-2 shadow"
+        className="rounded-start p-0 input-group-text"
         alt="User Image"
         height={60}
         width={60}
