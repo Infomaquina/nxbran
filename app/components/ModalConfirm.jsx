@@ -81,10 +81,6 @@ export default function Confirm({date,folgas,users,close}){
       close()
    }
 
-   function rand() {
-      return Math.floor(Math.random() * 100);
-   }
-
    return (
       <div className="modal-overlay">
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
@@ -110,7 +106,7 @@ export default function Confirm({date,folgas,users,close}){
                            value={users.id}
                            onChange={(e) => handleCheckboxChange(users.id, e.currentTarget.checked)}
                            >                           
-                              <Image className="rounded-circle border border-2 border-dark me-2" height={40} width={40} alt="Eu" src={`/img/users/${users.id}.jpg?${rand()}`}/>
+                              <Image className="rounded-circle border border-2 border-dark me-2" height={40} width={40} alt="Eu" src={`/img/users/${users.id}.jpg`}/>
                            <strong>{users.name}</strong>
                         </ToggleButton>
                      ))}

@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
-import executeQuery from '../../../../database/sql'
+import executeQuery from '@/database/sql'
 import bcrypt from 'bcrypt';
 import { sign } from 'jsonwebtoken';
 import { getCookies } from 'next-client-cookies/server';
@@ -12,7 +12,7 @@ const generateAccessToken = (user) => {
    return accessToken;
 };
 
-const authOptions = {
+export const authOptions = {
   providers: [
       CredentialsProvider({
          name: 'credentials',

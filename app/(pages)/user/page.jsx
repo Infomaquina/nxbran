@@ -15,7 +15,6 @@ import { cookies } from 'next/headers'
 
 export default async function user() {
    const session = await UserSession()
-   // console.log(session.user)
    
    let users = []
    if(session.user.level == 0) {
