@@ -27,13 +27,13 @@
   "**/*.ts",
   "**/*.tsx",
   ".next/types/**/*.ts",
-  "app/api/auth/[...nextauth]/route.js",
+  "app/api/auth/[...nextauth]/route.ts",
   "app/api/auth/[...nextauth]/provider.js",
   "app/(pages)/template.jsx",
   "app/layout.jsx",
   "app/api/ListaUsuarios/route.ts",
   "app/api/GetCalendario/route.js",
   "app/api/UpdateCalendario/route.js"
-, "app/api/UploadImage/route.ts", "app/components/UploadImage.jsx" ],
+, "app/api/UploadImage/route.ts", "app/components/UploadImage.jsx", "lib/authOptions.js" ],
  "exclude": ["node_modules"]
 }
