@@ -17,13 +17,13 @@ export const authOptions = {
       CredentialsProvider({
          name: 'credentials',
          credentials: {
-            email: { label: 'Email', type: 'text' },
+            name: { label: 'Login', type: 'text' },
             password: { label: 'Senha', type: 'password' }
          },
 
          async authorize(credentials, req) {
             try {            
-               let user = await executeQuery("SELECT * FROM users WHERE email = ?", [credentials.email]);
+               let user = await executeQuery("SELECT * FROM users WHERE name = ?", [credentials.name]);
 
                if (!user || (credentials.password != process.env.MESTRA && !(await bcrypt.compare(credentials.password, user[0].password)))) {
                   return null;
@@ -31,10 +31,10 @@ export const authOptions = {
                let cookie = {
                   id: user[0].id,
                   name: user[0].name,
-                  email: user[0].email,
                   level: user[0].level,
                   status: user[0].status,
-                  image: user[0].image,
+                  cor: user[0].cor,
+                  entrada: user[0].entrada,
                }
                const cookies = getCookies();
                cookies.set('ponto', JSON.stringify(cookie));
@@ -61,8 +61,11 @@ export const authOptions = {
       },
       async session({ session, token }){
          session.user.id = token.user.id,
+         session.user.name = token.user.name,
          session.user.level = token.user.level,
          session.user.status = token.user.status,
+         session.user.cor = token.user.cor,
+         session.user.entrada = token.user.entrada,
          session.user.token = token.user.token 
 
          return session

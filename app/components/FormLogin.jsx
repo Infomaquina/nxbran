@@ -4,13 +4,13 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faLock } from '@fortawesome/free-solid-svg-icons'
 import { faCircleRight } from '@fortawesome/free-solid-svg-icons'
 
 export default function FormLogin() {
 
-   const [email, setEmail] = useState('')
+   const [name, setName] = useState('')
    const [password, setPassword] = useState('')
    const [erro, setErro] = useState(null)
    const route = useRouter()
@@ -18,7 +18,7 @@ export default function FormLogin() {
    async function handleSubmit(e){
       e.preventDefault()
          const result = await signIn('credentials',{
-            email,
+            name,
             password,
             redirect: false
          })
@@ -41,9 +41,9 @@ export default function FormLogin() {
          </h3>
          <div className="form-group mt-3">
             <label className="text-white">
-               <FontAwesomeIcon icon={faEnvelope} className="me-2" />E-mail
+               <FontAwesomeIcon icon={faUser} className="me-2" />Login
             </label>
-            <input type="email" className="form-control mt-1" placeholder="Meu@email.com" onChange={(e) => setEmail(e.target.value)}/>
+            <input type="text" className="form-control mt-1" placeholder="Nome" onChange={(e) => setName(e.target.value)}/>
          </div>
          <div className="form-group mt-2">
             <label className="text-white">

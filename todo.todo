@@ -30,14 +30,17 @@
 ✔ Tentar clicar em qualquer lugar do dia para abrir o modal @done(24-01-19 11:48)
 ✔ Limitar edição de folgas apenas para admin @done(24-01-19 12:33)
 ☐ Theme bootstrap
-☐ Usuarios
 ☐ Confirmação Toast ao inves de swal
 21/01/24:
-☐ Usuarios em cards
-☐ Escolha de cor 
 24/01/24:
+✔ Usuarios em cards @done(24-01-25 12:00)
 ✔ Foto em group do Input login @done(24-01-24 09:53)
 ✔ Insert e edit @done(24-01-24 19:04)
+✔ Escolha de cor @done(24-01-25 12:00)
 25/01/24:
+✔ Usuarios @done(24-01-25 12:00)
 ✘ Block @cancelled(24-01-25 09:48)
-☐ Logar com nome
+✔ Dispensar imagem do BD @done(24-01-25 11:59)
+✔ Add entrada e cor na session @done(24-01-25 12:00)
+✔ Logar com nome @done(24-01-25 12:06)
+☐ teste IOS
