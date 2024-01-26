@@ -43,7 +43,7 @@ export default function FormLogin() {
             <label className="text-white">
                <FontAwesomeIcon icon={faUser} className="me-2" />Login
             </label>
-            <input type="text" className="form-control mt-1" placeholder="Nome" onChange={(e) => setName(e.target.value)}/>
+            <input type="text" className="form-control mt-1" placeholder="Meu nome" onChange={(e) => setName(e.target.value)}/>
          </div>
          <div className="form-group mt-2">
             <label className="text-white">
