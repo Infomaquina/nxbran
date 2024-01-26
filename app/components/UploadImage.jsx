@@ -41,10 +41,6 @@ export default function UploadImage({ id }) {
       uploadImage(selectedFile);
     }
   };
-  
-   function rand() {
-      return Math.floor(Math.random() * 10);
-   }
 
   return (
     <>
@@ -55,7 +51,7 @@ export default function UploadImage({ id }) {
         style={{ display: "none" }}
       />
       <Image
-        src={file ? file : `/img/users/${id}.jpg?${rand()}`}
+        src={file ? file : `/img/users/${id}.jpg?${new Date().getTime()}`}
         className="rounded-start p-0 input-group-text"
         alt="User Image"
         height={60}
