@@ -1,7 +1,6 @@
 'use server'
 import executeQuery from '@/database/sql'
 import { NextResponse } from "next/server"
-import { revalidatePath } from 'next/cache'
 
 
 export async function GET(req) {
@@ -23,8 +22,6 @@ export async function GET(req) {
             date: item.data,
             color: item.cor
          }));
-
-         revalidatePath('/calendario')
          
 
          return NextResponse.json({folgas,users})
