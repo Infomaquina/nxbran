@@ -5,8 +5,9 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalConfirm from "@/app/components/ModalConfirm";
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function Calendario() {
 
@@ -16,6 +17,7 @@ export default function Calendario() {
    const [users, setUsers] = useState([])
    const [folgas, setFolgas] = useState([]);
    const {data : session, status} = useSession();
+   const router = useRouter();
 
    const handleDateClick = (info) => {
       if(session.user.level == 0){
@@ -49,17 +51,12 @@ export default function Calendario() {
    const closeModal = () => {
       setGetDate([])
       setModal(false)
-      if (calendarRef.current) {
-      calendarRef.current.getApi().refetchEvents();
-    }
+      router.replace('/calendario')
    }
-
-   const calendarRef = useRef(null);
 
    return (<>
       <div style={{position:'relative', zIndex:0}}>
          <FullCalendar
-            ref={calendarRef}
             plugins={[ dayGridPlugin, interactionPlugin ]}
              titleFormat={{
                month: 'long',
