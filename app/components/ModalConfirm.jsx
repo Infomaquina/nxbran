@@ -11,7 +11,7 @@ import { faReply } from '@fortawesome/free-solid-svg-icons'
 import Image from "next/image";
 
 
-export default function Confirm({date,folgas,users,close}){
+export default function Confirm({date,folgas,users,close,closeUpdate}){
 
    const [checkboxStates, setCheckboxStates] = useState({});
 
@@ -78,7 +78,7 @@ export default function Confirm({date,folgas,users,close}){
             }
          }
       } 
-      close()
+      closeUpdate(selectedNames)
    }
 
    return (
