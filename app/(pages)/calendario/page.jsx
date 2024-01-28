@@ -7,7 +7,7 @@ import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalConfirm from "@/app/components/ModalConfirm";
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { revalidateTag } from 'next/cache'
 
 export default function Calendario() {
 
@@ -17,7 +17,6 @@ export default function Calendario() {
    const [users, setUsers] = useState([])
    const [folgas, setFolgas] = useState([]);
    const {data : session, status} = useSession();
-   const router = useRouter();
 
    const handleDateClick = (info) => {
       if(session.user.level == 0){
@@ -37,7 +36,8 @@ export default function Calendario() {
    useEffect(() => {
       const fetchData = async ()=>{
          try {
-            const response = await fetch("/api/GetCalendario",{ cache: 'no-store',next: { revalidate: 1 } })
+            const response = await fetch("/api/GetCalendario", 
+            { next: { tags: ['collection'] } })
             const dados = await response.json()
             setEvent(dados.folgas)
             setUsers(dados.users)
@@ -51,7 +51,10 @@ export default function Calendario() {
    const closeModal = () => {
       setGetDate([])
       setModal(false)
-      router.replace('/calendario')
+      try{
+         revalidateTag('collection')
+      } catch (error) {
+      }
    }
 
    return (<>
