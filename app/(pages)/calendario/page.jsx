@@ -53,10 +53,12 @@ export default function Calendario() {
    }
 
    const closeUpdate = (event) => {
-    const api = calendarRef.current.getApi();
-    api.addEvent(event);
-    closeModal()
-  };
+      const api = calendarRef.current.getApi();
+      console.log(event);
+      api.addEvent(event);
+      api.refetchEvents();
+      closeModal()
+   };
 
    return (<>
       <div style={{position:'relative', zIndex:0}}>
