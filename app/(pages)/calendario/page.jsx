@@ -1,4 +1,3 @@
-// import FullCalendar from '@/app/components/FullCalendar';
 'use client'
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -36,7 +35,9 @@ export default function Calendario() {
    useEffect(() => {
       const fetchData = async ()=>{
          try {
-            const response = await fetch("/api/GetCalendario")
+            const response = await fetch("/api/GetCalendario", {
+               cache: 'no-store',
+            })
             const dados = await response.json()
             setEvent(dados.folgas)
             setUsers(dados.users)
@@ -84,13 +85,12 @@ export default function Calendario() {
             events={events}
          />
       </div>
-      {modal && 
-         <ModalConfirm
-            date={getDate} 
-            users={users} 
-            folgas={folgas}
-            close={closeModal}
-            closeUpdate={closeUpdate}
-         />}
+      {modal && <ModalConfirm
+         date={getDate} 
+         users={users} 
+         folgas={folgas}
+         close={closeModal}
+         closeUpdate={closeUpdate}
+      />}
    </>);  
 }
