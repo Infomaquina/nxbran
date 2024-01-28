@@ -36,7 +36,7 @@ export default function Calendario() {
    useEffect(() => {
       const fetchData = async ()=>{
          try {
-            const response = await fetch("/api/GetCalendario", 
+            const response = await fetch("/api/GetCalendario", { cache: 'no-store' }, 
             { next: { tags: ['collection'] } })
             const dados = await response.json()
             setEvent(dados.folgas)
