@@ -14,7 +14,7 @@ export default async function FooterBar() {
                </Link>
             </Button>
             <Button type='button' variant='dark' className='animate__animated animate__lightSpeedInLeft animate__faster'>
-               <Link href={'/calendario'} prefetch={false}>
+               <Link href={'/calendario'}>
                   <FontAwesomeIcon icon={faCalendarDays} className='fa-2x text-success'/>
                </Link>
             </Button>

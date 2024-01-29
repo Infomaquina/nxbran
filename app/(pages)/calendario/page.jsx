@@ -54,7 +54,7 @@ export default function Calendario() {
    }
 
    const closeUpdate = () => {
-      setUpdateEvents(true)
+      setUpdateEvents((prev) => !prev)
       closeModal()
    };
 
