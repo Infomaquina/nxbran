@@ -15,7 +15,7 @@ export default function Calendario() {
    const [users, setUsers] = useState([])
    const [folgas, setFolgas] = useState([]);
    const {data : session, status} = useSession();
-   const calendarRef = useRef(null);
+   const [updateEvents, setUpdateEvents] = useState(false)
 
    const handleDateClick = (info) => {
       if(session.user.level == 0){
@@ -46,25 +46,21 @@ export default function Calendario() {
          }
       }
       fetchData()
-   },[getDate]);
+   },[getDate, updateEvents]);
 
    const closeModal = () => {
       setGetDate([])
       setModal(false)
    }
 
-   const closeUpdate = (event) => {
-      const api = calendarRef.current.getApi();
-      console.log(event);
-      api.addEvent(event);
-      api.refetchEvents();
+   const closeUpdate = () => {
+      setUpdateEvents(true)
       closeModal()
    };
 
    return (<>
       <div style={{position:'relative', zIndex:0}}>
          <FullCalendar
-            ref={calendarRef}
             plugins={[ dayGridPlugin, interactionPlugin ]}
              titleFormat={{
                month: 'long',
