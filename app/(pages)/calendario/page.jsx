@@ -57,7 +57,7 @@ export default function Calendario() {
 
    const closeUpdate = () => {
       setUpdateEvents((prev) => !prev)
-      Router.replace('/calendario')
+      Router.push('/calendario?'+Math.floor(Math.random() * 100) + 1)
       closeModal()
    };
 
