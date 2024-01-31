@@ -6,6 +6,7 @@ import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalConfirm from "@/app/components/ModalConfirm";
 import React, { useEffect, useState, useRef } from 'react';
 import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 export default function Calendario() {
 
@@ -16,6 +17,7 @@ export default function Calendario() {
    const [folgas, setFolgas] = useState([]);
    const {data : session, status} = useSession();
    const [updateEvents, setUpdateEvents] = useState(false)
+   const Router = useRouter();
 
    const handleDateClick = (info) => {
       if(session.user.level == 0){
@@ -55,6 +57,7 @@ export default function Calendario() {
 
    const closeUpdate = () => {
       setUpdateEvents((prev) => !prev)
+      Router.replace('/calendario')
       closeModal()
    };
 
