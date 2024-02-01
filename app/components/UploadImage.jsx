@@ -26,11 +26,11 @@ export default function UploadImage({ id }) {
         console.log("Imagem enviada com sucesso!");
         // Adicione feedback de sucesso se necessário
       } else {
-        console.error("Erro ao enviar imagem:", response.statusText);
+        console.error("Erro ao enviar imagem API:", response.statusText);
         // Adicione feedback de erro se necessário
       }
     } catch (error) {
-      console.error("Erro ao enviar imagem:", error);
+      console.error("Erro geral enviar imagem:", error);
       // Adicione feedback de erro se necessário
     }
   };
