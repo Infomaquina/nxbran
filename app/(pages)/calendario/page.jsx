@@ -7,6 +7,8 @@ import ModalConfirm from "@/app/components/ModalConfirm";
 import React, { useEffect, useState, useRef } from 'react';
 import { useSession } from 'next-auth/react';
 
+export const revalidate = true
+
 export default function Calendario() {
 
    const [getDate, setGetDate] = useState(null)
@@ -39,6 +41,7 @@ export default function Calendario() {
             const dados = await response.json()
             setEvent(dados.folgas)
             setUsers(dados.users)
+            console.log('Coletou nvoso eventos');
          } catch (error) {
             console.log("Erro ao pegar folgas", error);
          }
