@@ -1,5 +1,6 @@
 import bcrypt from 'bcrypt';
-import UploadImage from "@/app/components/UploadImage"
+import Link from 'next/link';
+import Image from 'next/image';
 import UserSession from "@/app/components/UserSession"
 import executeQuery from "@/database/sql"
 import { redirect } from "next/navigation"
@@ -67,15 +68,24 @@ export default async function user() {
 
 
    return (<>
-   <form action={formAction}>
+   <form action={formAction} style={{position:'relative', zIndex:0}}>
       {users.map((user) => (
          <div key={user.id} className="card shadow my-3 bg-light">
             <div className="card-body">
                <div className="row g-2">  
                   <input type="hidden" name="id_user" value={user.id} />
                   <div className="col-12">            
-                     <div className="input-group">
-                        <UploadImage id={user.id} />
+                     <div className="input-group">                        
+                        <Link href={"/user/confirm?id="+user.id}>
+                           <Image
+                              src={user.image+'?'+new Date().getTime()}
+                              className="rounded-start p-0 input-group-text"
+                              alt="User Image"
+                              height={60}
+                              width={60}
+                              style={{ cursor: "pointer" }}/>
+                        </Link>
+                        {/* <UploadImage id={user.id} /> */}
                         <div className="form-floating">
                            <input type="text" className="form-control" style={{height:60}} required placeholder="Username" name="nome" defaultValue={user.name}/>
                            <label><FontAwesomeIcon icon={faUser}/> Login</label>

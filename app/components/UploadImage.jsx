@@ -24,14 +24,11 @@ export default function UploadImage({ id }) {
 
       if (response.ok) {
         console.log("Imagem enviada com sucesso!");
-        // Adicione feedback de sucesso se necessário
       } else {
         console.error("Erro ao enviar imagem API:", response.statusText);
-        // Adicione feedback de erro se necessário
       }
     } catch (error) {
       console.error("Erro geral enviar imagem:", error);
-      // Adicione feedback de erro se necessário
     }
   };
 
@@ -51,7 +48,7 @@ export default function UploadImage({ id }) {
         style={{ display: "none" }}
       />
       <Image
-        src={file ? file : `/img/users/${id}.jpg?${new Date().getTime()}`}
+      //   src={file ? file : `/img/users/${id}.jpg?${new Date().getTime()}`}
         className="rounded-start p-0 input-group-text"
         alt="User Image"
         height={60}
