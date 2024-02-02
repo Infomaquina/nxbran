@@ -15,5 +15,6 @@ export async function GET(req, res){
 
    } catch (error) {
       console.log("Falhou o update",error);
+      return NextResponse.json('Fail')
    }
 }
