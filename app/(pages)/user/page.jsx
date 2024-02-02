@@ -31,7 +31,7 @@ export default async function user() {
          // NOVO USUARIO
          const novo_nome = formData.get("novo_nome")
          const nova_senha = formData.get("nova_senha")
-         const nova_entrada = formData.get("nova_entrada")
+         const nova_entrada = formData.get("nova_entrada")+':00'
          const nova_cor = formData.get("nova_cor")
          if(novo_nome.length > 0 && nova_senha.length > 0 && nova_entrada.length > 0) {
             let salt = await bcrypt.genSalt(10) 
@@ -52,9 +52,9 @@ export default async function user() {
          if(senha[i].length > 0) {
             let salt = await bcrypt.genSalt(10)
             let cript = await bcrypt.hash(senha[i], salt)        
-            await executeQuery("UPDATE users SET name =?, password =?, entrada =?, cor = ? WHERE id =?", [nomes[i], cript, entra[i], cores[i], id])
+            await executeQuery("UPDATE users SET name =?, password =?, entrada =?, cor = ? WHERE id =?", [nomes[i], cript, entra[i]+':00', cores[i], id])
          }else{        
-            await executeQuery("UPDATE users SET name =?, entrada =?, cor=? WHERE id =?", [nomes[i], entra[i], cores[i], id])
+            await executeQuery("UPDATE users SET name =?, entrada =?, cor=? WHERE id =?", [nomes[i], entra[i]+':00', cores[i], id])
          }
          i++      
       }

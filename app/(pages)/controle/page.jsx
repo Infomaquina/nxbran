@@ -13,6 +13,13 @@ export default async function Controle() {
 
    const hoje = format(new Date(), 'yyyy-MM-dd');
    const session = await UserSession()
+
+   function formatarHora(hora,add){
+      let nh = new Date(hora)
+      let ah = addHours(nh, add)
+      console.log(ah);
+      return format(ah, 'HH:mm:ss')
+   }
    
    let entrada = 'btn btn-success btn-lg shadow', e = '',
       intervalo = 'btn btn-secondary btn-lg shadow', i = 'disabled',
@@ -22,19 +29,16 @@ export default async function Controle() {
         
       let user = await executeQuery("SELECT * FROM registros WHERE data LIKE ? AND id_user = ? ORDER BY id DESC", [hoje+'%',session.user.id]);
       
-      let intervaloPrev = '12:00:00'
-      let retornoPrev = '13:00:00'
-      let saidaPrev = '18:00:00'
-      let prev
+      let entradaPrev = '2000-01-01 '+session.user.entrada
+      let intervaloPrev = formatarHora(entradaPrev,4)
+      let retornoPrev = formatarHora(entradaPrev,5)
+      let saidaPrev = formatarHora(entradaPrev,8)
+      
       if(user !== undefined && user.length > 0){  
       
-         let horaInicial = new Date(user[0].data) 
-         prev = addHours(horaInicial, 4)
-         intervaloPrev = format(prev, 'HH:mm:ss')
-         prev = addHours(horaInicial, 5)
-         retornoPrev = format(prev, 'HH:mm:ss')
-         prev = addHours(horaInicial, 8)
-         saidaPrev = format(prev, 'HH:mm:ss')
+         intervaloPrev = formatarHora(user[0].data,4)
+         retornoPrev = formatarHora(user[0].data,5)
+         saidaPrev = formatarHora(user[0].data,8)
 
          mmt = user[0].momento;
          entrada = 'btn btn-secondary btn-lg shadow', e = 'disabled'
@@ -60,7 +64,7 @@ export default async function Controle() {
          <div className="d-grid gap-0 mt-3">
 
             <h5 className={user[0]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
-               <FontAwesomeIcon icon={user[0]? faCircleCheck : faClock} className='me-2'/>{user[0]? user[0].data.split(' ')[1] : '08:00:00'}
+               <FontAwesomeIcon icon={user[0]? faCircleCheck : faClock} className='me-2'/>{user[0]? user[0].data.split(' ')[1] : session.user.entrada}
             </h5>
             <Link href={user[0]? '' : "/controle/confirm?escolha=entrada&momento=0"} className={entrada}>
                <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Entrada
