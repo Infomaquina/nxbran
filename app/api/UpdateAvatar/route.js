@@ -3,7 +3,7 @@ import executeQuery from '@/database/sql'
 import { NextResponse } from 'next/server'
 import { revalidatePath } from 'next/cache';
 
-export async function GET(req, res){
+export async function PUT(req, res){
    try {
       const url = new URL(req.url)
       const id = url.searchParams.get("id")  

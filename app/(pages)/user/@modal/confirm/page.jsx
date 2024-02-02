@@ -12,7 +12,9 @@ export default function Confirm({searchParams}){
 
    async function updateAvatar(img){
       try {
-         await fetch(`/api/UpdateAvatar?img=${img}&id=${searchParams.id}`)
+         await fetch(`/api/UpdateAvatar?img=${img}&id=${searchParams.id}`,{
+            method: 'PUT'
+         })
          router.back()
       } catch (error) {
          console.log('Impossivel salvar imagem',error);
