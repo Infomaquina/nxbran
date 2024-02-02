@@ -106,7 +106,7 @@ export default function Confirm({date,folgas,users,close,closeUpdate}){
                            value={users.id}
                            onChange={(e) => handleCheckboxChange(users.id, e.currentTarget.checked)}
                            >                           
-                              <Image className="rounded-circle border border-2 border-dark me-2" height={40} width={40} alt="Eu" src={users.image}/>
+                              <Image className="rounded-circle bg-white border border-2 border-dark me-2" height={40} width={40} alt="Eu" src={users.image}/>
                            <strong>{users.name}</strong>
                         </ToggleButton>
                      ))}

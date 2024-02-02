@@ -23,7 +23,7 @@ export default function Confirm({searchParams}){
       <div className="modal-overlay">
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute'}}
          >
-            <Modal.Dialog style={{marginBottom:'110px'}}>
+            <Modal.Dialog style={{marginBottom:'60px',marginTop:'60px'}}>
                <Modal.Header>
                   <Modal.Title>Escolha um avatar</Modal.Title>
                   <FontAwesomeIcon icon={faCircleXmark} className="fa-2x" onClick={()=>router.back()} />

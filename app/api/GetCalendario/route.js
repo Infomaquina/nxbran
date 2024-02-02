@@ -11,7 +11,7 @@ export async function PUT(req) {
          Qfolgas = [];
       })
 
-      let users = await executeQuery("SELECT id,name,cor FROM users ORDER BY name").catch(error => {
+      let users = await executeQuery("SELECT id,name,image,cor FROM users ORDER BY name").catch(error => {
          console.error("Erro ao obter dados de usuários:", error);
          users = [];
       })
