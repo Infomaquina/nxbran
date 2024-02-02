@@ -1,42 +1,45 @@
 'use client'
 import Modal from 'react-bootstrap/Modal';
-import { useSession } from "next-auth/react";
-import { useEffect } from 'react';
 import Image from 'next/image';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faCircleXmark } from "@fortawesome/free-solid-svg-icons"
+import { useRouter } from 'next/navigation';
 
 
 export default function Confirm({searchParams}){
-   const { data: session, status } = useSession();
 
-   useEffect(()=>{
-      const imgs = async ()=>{
-         try {
-            const resp = await fetch("api/GetImages")
-         } catch (error) {
-            
-         }
-      }
-   })
+   const router = useRouter();
+
+   async function updateAvatar(img){
+      try {
+         await fetch(`/api/UpdateAvatar?img=${img}&id=${searchParams.id}`)
+         router.back()
+      } catch (error) {
+         console.log('Impossivel salvar imagem',error);
+      }   
+   }
    
    return (
-      <div className="modal-overlay mb-5 mt-5">
+      <div className="modal-overlay">
          <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute'}}
          >
-            <Modal.Dialog>
+            <Modal.Dialog style={{marginBottom:'110px'}}>
                <Modal.Header>
                   <Modal.Title>Escolha um avatar</Modal.Title>
+                  <FontAwesomeIcon icon={faCircleXmark} className="fa-2x" onClick={()=>router.back()} />
                </Modal.Header>
 
-               <Modal.Body class="text-center">
+               <Modal.Body className="text-center">
                   {Array.from({length:48}, (_,i)=>(
                      <Image
                      key={i}
                      src={`/img/users/${i}.png`}
-                     className="rounded-start p-0 input-group-text d-inline m-2"
+                     className="rounded-start d-inline m-2"
                      alt="User Image"
                      height={60}
                      width={60}
-                     style={{ cursor: "pointer" }}/>                  
+                     style={{ cursor: "pointer" }}
+                     onClick={()=>updateAvatar(i)}/>                  
                   ))}                  
                </Modal.Body>
 

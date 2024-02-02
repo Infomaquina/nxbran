@@ -51,12 +51,12 @@ label {
 
 .modal-overlay {
   position: fixed;
-  top: 0;
+  top: 55px;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5); /* Cor de fundo escura com opacidade 0.5 para escurecer */
-  backdrop-filter: blur(5px); /* Aplica blur ao fundo */
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
   display: flex;
   justify-content: center;
   align-items: center;
