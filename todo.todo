@@ -43,9 +43,11 @@
 ✔ Dispensar imagem do BD @done(24-01-25 11:59)
 ✔ Add entrada e cor na session @done(24-01-25 12:00)
 ✔ Logar com nome @done(24-01-25 12:06)
-☐ teste IOS
-☐ Abreviar Nome em calendario
-☐ Deploy
+✔ Deploy @done(24-02-02 12:19)
 02/02/24:
-☐ Ajuste individual para horario de entrada em Controle
+✔ Ajuste individual para horario de entrada em Controle @done(24-02-02 12:19)
+✔ teste IOS @done(24-02-02 12:27)
+☐ Abreviar Nome em calendario
+✘ Lipar formulario de user @cancelled(24-02-02 19:24)
+☐ Verificar nome repetido ao add user
 ☐ Adicionar Loading

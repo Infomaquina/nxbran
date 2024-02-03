@@ -20,6 +20,7 @@ export default async function user() {
    let users = []
    if(session.user.level == 0) {
       users = await executeQuery("SELECT * FROM users")
+      console.log(users[0].image);
    }else{
       users = [session.user]
    }
@@ -27,25 +28,14 @@ export default async function user() {
    async function formAction(formData) {
       'use server'
 
-      if(session.user.level == 0){
-         // NOVO USUARIO
-         const novo_nome = formData.get("novo_nome")
-         const nova_senha = formData.get("nova_senha")
-         const nova_entrada = formData.get("nova_entrada")+':00'
-         const nova_cor = formData.get("nova_cor")
-         if(novo_nome.length > 0 && nova_senha.length > 0 && nova_entrada.length > 0) {
-            let salt = await bcrypt.genSalt(10) 
-            let cript = await bcrypt.hash(nova_senha, salt)
-            await executeQuery("INSERT INTO users (name, password, entrada, cor, status) VALUES (?,?,?,?,?)", [novo_nome, cript, nova_entrada, nova_cor, 1])
-         }      
-      }
-
       // EDITAR USUARIOS
       const id_us = formData.getAll("id_user")
       const nomes = formData.getAll("nome")
       const entra = formData.getAll("entrada")
       const senha = formData.getAll("senha")  
       const cores = formData.getAll("cor")
+
+
 
       let i=0;
       for (const id of id_us) {
@@ -59,8 +49,25 @@ export default async function user() {
          i++      
       }
 
-      session.user.level == 0 ? revalidatePath('/user') : sair();
-      function sair(){
+      if(session.user.level == 0){
+
+         const novo_nome = formData.get("novo_nome")
+         const nova_senha = formData.get("nova_senha")
+         const nova_entrada = formData.get("nova_entrada")+':00'
+         const nova_cor = formData.get("nova_cor")
+         if(novo_nome.length > 0 && nova_senha.length > 0 && nova_entrada.length > 0) {
+
+            nomes.map((nome)=>{
+               if(nome == novo_nome) {
+                  return
+               }
+            })
+            let salt = await bcrypt.genSalt(10) 
+            let cript = await bcrypt.hash(nova_senha, salt)
+            await executeQuery("INSERT INTO users (name, password, entrada, cor, status, image) VALUES (?,?,?,?,?,?)", [novo_nome, cript, nova_entrada, nova_cor, 1, '/img/users/0.png'])
+         } 
+         revalidatePath('/user')  
+      }else{
          cookies().delete('__Secure-next-auth.session-token')
          redirect('/')
       }
