@@ -6,24 +6,24 @@ import { CookiesProvider } from 'next-client-cookies/server';
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
-   metadataBase: new URL('https://localhost:3000'),
+   metadataBase: new URL('https://santalolla.vercel.app/'),
    generator: 'Next.js',
-   title: 'Ponto',
-   description: 'Brandev app',
+   title: 'SantaLolla',
+   description: 'Ponto app',
    keywords: ['Brandev', 'Ponto', 'Santa Lolla'],
    creator: 'Anderson Brandão',
    publisher: 'Anderson Brandão',
    openGraph: {
-      title: 'Ponto',
-      description: 'Ponto Brandev',
-      url: '/img/pwa/512.png',
-      siteName: 'Ponto.Brandev',
+      title: 'SantaLolla',
+      description: 'Ponto SantaLolla',
+      url: 'https://santalolla.vercel.app/public/img/pwa/512.png',
+      siteName: 'https://santalolla.vercel.app/',
       images: [
          {
-         url: '/img/pwa/512.png', // Must be an absolute URL
+         url: 'https://santalolla.vercel.app/public/img/pwa/512.png',
          width: 512,
          height: 512,
-         alt: 'Brandev',
+         alt: 'SantaLolla',
          },
       ],
       locale: 'pt-br',
