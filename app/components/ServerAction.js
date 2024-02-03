@@ -14,7 +14,7 @@ const ServerAction = async (prevState, formData) => {
       hour: '2-digit', 
       minute: '2-digit', 
       second: '2-digit', 
-      timeZone: 'UTC' 
+      timeZone: 'America/Sao_Paulo' 
    };
 
    const dataAtual = new Date();
