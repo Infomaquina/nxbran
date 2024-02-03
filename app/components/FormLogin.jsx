@@ -32,7 +32,7 @@ export default function FormLogin() {
    }
 
 
-  return (
+  return (<>
     <form className="Auth-form bg-dark" onSubmit={handleSubmit}>
       
       <div className="Auth-form-content">
@@ -60,6 +60,9 @@ export default function FormLogin() {
       <div className="text-center mt-2">
          {erro && <p className="text-danger">{erro}</p>}
       </div>
+      <div className="text-center mt-4">
+         <p>V 1.0</p>
+      </div>
     </form>
-  )
+  </>)
 }
