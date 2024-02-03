@@ -49,5 +49,7 @@
 ✔ teste IOS @done(24-02-02 12:27)
 ☐ Abreviar Nome em calendario
 ✘ Lipar formulario de user @cancelled(24-02-02 19:24)
-☐ Verificar nome repetido ao add user
+✔ Verificar nome repetido ao add user @done(24-02-02 21:19)
 ☐ Adicionar Loading
+☐ Add tast de confirmação
+☐ Controle marcando duas vezes
