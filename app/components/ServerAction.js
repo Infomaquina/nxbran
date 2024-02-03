@@ -14,11 +14,11 @@ const ServerAction = async (prevState, formData) => {
       hour: '2-digit', 
       minute: '2-digit', 
       second: '2-digit', 
-      timeZoneName: 'short' 
+      timeZone: 'UTC' 
    };
 
    const dataAtual = new Date();
-   const data = dataAtual.toLocaleString('pt-BR', opcoes);
+   const data = dataAtual.toLocaleString('en-US', opcoes).replace(/(\d+)\/(\d+)\/(\d+), (\d+:\d+:\d+)/, '$3-$1-$2 $4');
 
    await executeQuery("INSERT INTO registros (data,id_user,momento) VALUES (?,?,?)", [data,id_user,momento]);
 

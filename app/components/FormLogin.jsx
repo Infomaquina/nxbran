@@ -61,7 +61,7 @@ export default function FormLogin() {
          {erro && <p className="text-danger">{erro}</p>}
       </div>
       <div className="text-center mt-4 text-white">
-         <p>V 1.0</p>
+         <p>V 1.1</p>
       </div>
     </form>
   </>)
