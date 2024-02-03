@@ -16,11 +16,11 @@ export const metadata = {
    openGraph: {
       title: 'SantaLolla',
       description: 'Ponto SantaLolla',
-      url: 'https://santalolla.vercel.app/public/img/pwa/512.png',
+      url: 'https://santalolla.vercel.app/img/pwa/512.png',
       siteName: 'https://santalolla.vercel.app/',
       images: [
          {
-         url: 'https://santalolla.vercel.app/public/img/pwa/512.png',
+         url: 'https://santalolla.vercel.app/img/pwa/512.png',
          width: 512,
          height: 512,
          alt: 'SantaLolla',
