@@ -83,7 +83,7 @@ export default function Confirm({date,folgas,users,close,closeUpdate}){
 
    return (
       <div className="modal-overlay">
-         <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', top: '20%'}}
+         <div className="modal show animate__animated animate__fadeIn" style={{ display: 'block', position: 'absolute', paddingTop: '70px', paddingBottom: '70px'}}
          >
             <Modal.Dialog>
                <Modal.Header>
