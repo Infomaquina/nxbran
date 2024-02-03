@@ -1,10 +1,11 @@
 'use client'
-import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import Button from 'react-bootstrap/Button';
 import ServerAction from '@/app/components/ServerAction';
+import LoadingButton from '@/app/components/LoadingButton';
 import { useRouter } from 'next/navigation'
-import { useFormState, useFormStatus } from 'react-dom';
 import { useSession } from "next-auth/react";
+import { useFormState } from 'react-dom';
 
 const initialState = {
    message : false
@@ -14,7 +15,6 @@ export default function Confirm({searchParams}){
    const { data: session, status } = useSession();
    const router = useRouter()
    const [ state, formAction ] = useFormState(ServerAction, initialState)
-   const { pending } = useFormStatus()
    
    return (
       <div className="modal-overlay">
@@ -34,7 +34,7 @@ export default function Confirm({searchParams}){
                   <form action={formAction}>
                      <input type="hidden" name="momento" id="momento" value={searchParams.momento} />
                      <input type="hidden" name="idUser" id="idUser" value={session.user.id} />
-                     <Button type='submit' onClick={() => router.back()} variant="success">{pending? "Registrando..." : "Sim, confirmo"}</Button>   
+                     <LoadingButton/>   
                   </form>
                </Modal.Footer>
             </Modal.Dialog>
