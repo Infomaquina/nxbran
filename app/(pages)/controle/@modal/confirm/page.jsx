@@ -6,6 +6,7 @@ import LoadingButton from '@/app/components/LoadingButton';
 import { useRouter } from 'next/navigation'
 import { useSession } from "next-auth/react";
 import { useFormState } from 'react-dom';
+import { useEffect, useState } from 'react';
 
 const initialState = {
    message : false
@@ -15,6 +16,25 @@ export default function Confirm({searchParams}){
    const { data: session, status } = useSession();
    const router = useRouter()
    const [ state, formAction ] = useFormState(ServerAction, initialState)
+   const [ msg, setMsg ] = useState([])
+   const [location, setLocation] = useState();
+
+   async function locationApi({latitude, longitude}){
+      const res = await fetch(`/api/Geolocation?geo=${latitude},${longitude}&id=${searchParams.id}`,{
+         method: 'PUT'
+      })
+      const data = await res.json()
+      setMsg(data)
+   }
+
+   useEffect(() => {
+      if('geolocation' in navigator){
+         navigator.geolocation.getCurrentPosition(async (position) => {
+             const { latitude, longitude } = position.coords
+             await locationApi({latitude, longitude})
+          })
+      }
+   })
    
    return (
       <div className="modal-overlay">
@@ -26,6 +46,7 @@ export default function Confirm({searchParams}){
                </Modal.Header>
 
                <Modal.Body>
+                  {msg?.length > 0 && <p className="text-center">{msg}</p>}
                   <p>Confirma a <strong>{searchParams.escolha}</strong>?</p>
                </Modal.Body>
 

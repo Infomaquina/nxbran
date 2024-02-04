@@ -59,67 +59,65 @@ export default async function Controle() {
       if(mmt == 0){
          intervalo = {
             botao : btnPrimary,
-            link: '/controle/confirm?escolha=intervalo&momento=1',
+            link: '/controle/confirm?escolha=intervalo&momento=1&id='+session.user.id,
          } 
       }
       if(mmt == 1){ 
          retorno = {
             botao : btnPrimary,
-            link: '/controle/confirm?escolha=retorno&momento=2',
+            link: '/controle/confirm?escolha=retorno&momento=2&id='+session.user.id,
          } 
       }
       if(mmt == 2){
          saida = {
             botao : btnPrimary,
-            link: '/controle/confirm?escolha=saida&momento=3',
+            link: '/controle/confirm?escolha=saida&momento=3&id='+session.user.id,
          } 
       }
    }else{
       entrada = {
          botao : btnPrimary,
          icon: faClock,
-         link: '/controle/confirm?escolha=entrada&momento=0',
+         link: '/controle/confirm?escolha=entrada&momento=0&id='+session.user.id,
       } 
    }
 
-      return (<>
-         <div className="d-grid gap-0 mt-3">
+   return (<>
+      <div className="d-grid gap-0 mt-3">
 
-            {/* ENTRADA */}
-            <h5 className={user[0]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
-               <FontAwesomeIcon icon={user[0]? faCircleCheck : faClock} 
-               className='me-2'/>{user[0]? user[0].data.split(' ')[1] : session.user.entrada}
-            </h5>
-            <Link href={entrada.link} className={entrada.botao}>
-               <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Entrada
-            </Link>
+         {/* ENTRADA */}
+         <h5 className={user[0]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
+            <FontAwesomeIcon icon={user[0]? faCircleCheck : faClock} 
+            className='me-2'/>{user[0]? user[0].data.split(' ')[1] : session.user.entrada}
+         </h5>
+         <Link href={entrada.link} className={entrada.botao}>
+            <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Entrada
+         </Link>
 
-            {/* INTERVALO */}
-            <h5 className={user[1]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
-               <FontAwesomeIcon icon={user[1]? faCircleCheck : faClock} className='me-2'/>{user[1]? user[1].data.split(' ')[1] : intervaloPrev}
-            </h5>
-            <Link href={intervalo.link} className={intervalo.botao}>
-               <FontAwesomeIcon icon={faCirclePause} className='me-2' />Intervalo
-            </Link>
+         {/* INTERVALO */}
+         <h5 className={user[1]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
+            <FontAwesomeIcon icon={user[1]? faCircleCheck : faClock} className='me-2'/>{user[1]? user[1].data.split(' ')[1] : intervaloPrev}
+         </h5>
+         <Link href={intervalo.link} className={intervalo.botao}>
+            <FontAwesomeIcon icon={faCirclePause} className='me-2' />Intervalo
+         </Link>
 
-            {/* RETORNO */}
-            <h5 className={user[2]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
-               <FontAwesomeIcon icon={user[2]? faCircleCheck : faClock} className='me-2'/>{user[2]? user[2].data.split(' ')[1] : retornoPrev}
-            </h5>
-            <Link href={retorno.link} className={retorno.botao}>
-               <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
-            </Link>
+         {/* RETORNO */}
+         <h5 className={user[2]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
+            <FontAwesomeIcon icon={user[2]? faCircleCheck : faClock} className='me-2'/>{user[2]? user[2].data.split(' ')[1] : retornoPrev}
+         </h5>
+         <Link href={retorno.link} className={retorno.botao}>
+            <FontAwesomeIcon icon={faCirclePlay} className='me-2' />Retorno
+         </Link>
 
-            {/* SAÍDA */}
-            <h5 className={user[3]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
-               <FontAwesomeIcon icon={user[3]? faCircleCheck : faClock} className='me-2'/>{user[3]? user[3].data.split(' ')[1] : saidaPrev}
-            </h5>
-            <Link href={saida.link} className={saida.botao}>
-               <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
-            </Link>
-         </div>
-      </>
-      );
-
-
+         {/* SAÍDA */}
+         <h5 className={user[3]? 'mt-3 text-success' : 'mt-3 text-secondary'}>
+            <FontAwesomeIcon icon={user[3]? faCircleCheck : faClock} className='me-2'/>{user[3]? user[3].data.split(' ')[1] : saidaPrev}
+         </h5>
+         <Link href={saida.link} className={saida.botao}>
+            <FontAwesomeIcon icon={faCircleStop} className='me-2' />Saída
+         </Link>
+      </div>
+   </>
+   );
 }
