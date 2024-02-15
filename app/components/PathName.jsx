@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFingerprint } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
+import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
 
 export default function PathName() {
    
@@ -11,11 +12,13 @@ export default function PathName() {
       '/controle': 'Controle',
       '/calendario': 'Calendario',
       '/user': 'Usuário',
+      '/tabela': 'Tabela',
    }
    const icone = {
       '/controle': faFingerprint,
       '/calendario': faCalendarDays,
       '/user': faUser,
+      '/tabela': faChartColumn,
    }
    
    return (<>

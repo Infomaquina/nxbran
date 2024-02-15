@@ -28,4 +28,5 @@ npm i mysql2
 ```npm i date-fns```
 ## COOKIES
 ```npm i nookies```
+## Loga com nome do usuario e não email
 

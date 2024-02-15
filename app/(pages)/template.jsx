@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
-import AuthToken from "@/app//components/AuthToken"
-import NavBar from "@/app//components/NavBar"
-import FooterBar from "@/app//components/FooterBar"
+import AuthToken from "@/app/components/AuthToken"
+import NavBar from "@/app/components/NavBar"
+import FooterBar from "@/app/components/FooterBar"
 import UserImage from "@/app/components/UserImage";
 
 export default async function Header({ children }) {
