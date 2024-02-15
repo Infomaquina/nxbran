@@ -105,7 +105,7 @@ label {
   padding: 0.75rem;
   vertical-align: top;
   border-top: 1px solid #dee2e6;
-  color: white;
+  font-weight: bold;
 }
 
 .custom-table thead th {
