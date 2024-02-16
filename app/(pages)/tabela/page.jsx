@@ -19,7 +19,7 @@ export default async function Tabela(){
          <h5 className='text-white'>Hoje {dia}</h5>
          <table className='custom-table'>
             {data.map(item => (
-               <tr key={item.id} style={{backgroundColor:item.cor}}>
+               <tr key={item.id} className='text-white' style={{backgroundColor:item.cor}}>
                   <td>{item.hora}</td>
                   <td>{item.name}</td>
                   <td>{item.result}</td>
