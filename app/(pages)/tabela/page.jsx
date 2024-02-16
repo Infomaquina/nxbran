@@ -15,7 +15,7 @@ export default async function Tabela(){
 
 
    return (
-      <div class="table-responsive">
+      <div className="table-responsive">
          <h5 className='text-white'>Hoje {dia}</h5>
          <table className='custom-table'>
             {data.map(item => (
