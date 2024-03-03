@@ -27,7 +27,7 @@ export default async function Tabela(){
             </thead>
             <tbody>
                {data.map(item => (
-                  <tr key={item.id} className='text-white'>
+                  <tr key={item.id} className='text-white' style={{backgroundColor:item.dia.split('/')[0] % 2 === 0 ? '#666' : ''}}>
                      <td>{item.dia}</td>
                      <td>{item.hora}</td>
                      <td><span className='rounded p-2' style={{backgroundColor:item.cor}}>{item.name}</span></td>
