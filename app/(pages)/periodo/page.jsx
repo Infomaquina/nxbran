@@ -6,6 +6,9 @@ import brLocale from '@fullcalendar/core/locales/pt-br';
 import ModalPeriodo from "@/app/components/ModalPeriodo";
 import React, { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSun } from '@fortawesome/free-solid-svg-icons'
+import { faMoon } from '@fortawesome/free-solid-svg-icons'
 
 export const revalidate = true
 
@@ -58,6 +61,13 @@ export default function Calendario() {
       closeModal()
    };
 
+   function icone(e){
+   console.log(e);
+      return e == '#f32' ? 
+      '<span class="fw-bold">Dia</span>':
+      '<span class="fw-bold">Noite</span>'
+   }
+
    return (<>
       <div style={{position:'relative', zIndex:0}}>
          <FullCalendar
@@ -82,9 +92,15 @@ export default function Calendario() {
             eventOrder={'color'}
             eventContent= {function(arg) {
             return {
-               html: '<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' +
-                  arg.event.title.split(' ').join('<br>') +
-                  '</div>'
+               html: `
+                  <div class="bg-dark text-secondary">
+                  ${icone(arg.event.backgroundColor)}
+                  </div>
+                  <div>
+                     <div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                     ${arg.event.title.split(' ').join('<br>')}
+                     </div>
+                  </div>`
             };
             }}
          />
