@@ -114,7 +114,19 @@ export default function Confirm({date,close,closeUpdate}){
                                  autocomplete="off" 
                                  onChange={(e) => handleCheckboxChange(`m${users.id}`, e.currentTarget.checked)}/>
                               <label class="btn btn-outline-success" for={`m${users.id}`}>
-                                 <FontAwesomeIcon icon={faSun} className='me-1'/>Dia
+                                 Manhã
+                              </label>
+
+                              <input 
+                                 type="radio" 
+                                 class="btn-check" 
+                                 name={users.id} 
+                                 id={`i${users.id}`} 
+                                 value='1'
+                                 autocomplete="off"
+                                 onChange={(e) => handleCheckboxChange(`i${users.id}`, e.currentTarget.checked)}/>
+                              <label class="btn btn-outline-success" for={`i${users.id}`}>
+                                 Inter
                               </label>
 
                               <input 
@@ -122,11 +134,11 @@ export default function Confirm({date,close,closeUpdate}){
                                  class="btn-check" 
                                  name={users.id} 
                                  id={`t${users.id}`} 
-                                 value='1'
+                                 value='2'
                                  autocomplete="off"
                                  onChange={(e) => handleCheckboxChange(`t${users.id}`, e.currentTarget.checked)}/>
                               <label class="btn btn-outline-success" for={`t${users.id}`}>
-                                 <FontAwesomeIcon icon={faMoon} className='me-1'/>Noite
+                                 Tarde
                               </label>
                            </div>
                         </div>                          

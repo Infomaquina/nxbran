@@ -63,9 +63,14 @@ export default function Calendario() {
 
    function icone(e){
    console.log(e);
-      return e == '#f32' ? 
-      '<span class="fw-bold">Dia</span>':
-      '<span class="fw-bold">Noite</span>'
+      if(e == '#f92'){
+         return '<span class="fw-bold">Manhã</span>'
+      }else
+      if(e == '#a78'){
+         return '<span class="fw-bold">Inter</span>'
+      }else{
+         return '<span class="fw-bold">Tarde</span>'
+      }
    }
 
    return (<>
@@ -93,7 +98,7 @@ export default function Calendario() {
             eventContent= {function(arg) {
             return {
                html: `
-                  <div class="bg-secondary">
+                  <div class="bg-secondary" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
                   ${icone(arg.event.backgroundColor)}
                   </div>
                   <div>
