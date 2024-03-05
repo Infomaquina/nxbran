@@ -93,7 +93,7 @@ export default function Calendario() {
             eventContent= {function(arg) {
             return {
                html: `
-                  <div class="bg-dark text-secondary">
+                  <div class="bg-secondary">
                   ${icone(arg.event.backgroundColor)}
                   </div>
                   <div>
