@@ -5,20 +5,23 @@ import { faFingerprint } from '@fortawesome/free-solid-svg-icons'
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faChartColumn } from '@fortawesome/free-solid-svg-icons'
+import { faHourglassHalf } from '@fortawesome/free-solid-svg-icons'
 
 export default function PathName() {
    
    const PathName = {
       '/controle': 'Controle',
-      '/calendario': 'Calendario',
+      '/calendario': 'Folgas',
       '/user': 'Usuário',
       '/tabela': 'Tabela',
+      '/periodo': 'Período',
    }
    const icone = {
       '/controle': faFingerprint,
       '/calendario': faCalendarDays,
       '/user': faUser,
       '/tabela': faChartColumn,
+      '/periodo': faHourglassHalf,
    }
    
    return (<>
